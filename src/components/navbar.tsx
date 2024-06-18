@@ -10,6 +10,7 @@ const StyledHeader = styled.div`
 	justify-content: space-between;
 	place-items: center;
 	font-size: 14px;
+	background-color: #fafafa;
 
 	/* navigation */
 	ul {

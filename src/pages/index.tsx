@@ -30,17 +30,21 @@ const Hero = styled.section`
 		position: relative;
 		width: 90%;
 		place-self: center end;
-		border-radius: 1rem;
+		border-radius: 1.5rem;
 		aspect-ratio: 1/1;
 
 		.img {
+			border: 0.5rem solid black;
+			border-radius: 1.5rem !important;
 			place-self: center;
-			/* height: 100%; */
 			border-radius: 1rem;
-			/* border-radius: 42% 10% 45% 10% / 30% 10% 35% 10%; */
 		}
 		/* width: 200px; */
 	}
+`;
+
+const ProjectSection = styled.section`
+	background-color: #fafafa;
 `;
 
 export default function Home() {
@@ -66,7 +70,7 @@ export default function Home() {
 								<br />
 								I like making cool stuff on the web.
 								<br />
-								Welcome to my corner of the internet :]
+								Welcome to my corner of the internet : ]
 							</p>
 						</div>
 						<div className='hero-img-wrapper'>
@@ -79,7 +83,9 @@ export default function Home() {
 							/>
 						</div>
 					</Hero>
-					<section>
+				</Container>
+				<ProjectSection>
+					<Container>
 						<h2>Projects</h2>
 						<p>
 							These are some of the projects I did that I found interesting.
@@ -90,8 +96,8 @@ export default function Home() {
 						{Projects.map((project) => (
 							<ProjectItemCard project={project} />
 						))}
-					</section>
-				</Container>
+					</Container>
+				</ProjectSection>
 			</main>
 		</>
 	);
