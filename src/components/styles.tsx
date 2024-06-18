@@ -4,6 +4,7 @@ export const Container = styled.div`
 	max-width: 1200px;
 	/* background-color: teal; */
 	margin: 0 auto;
+	padding: 5rem 0;
 `;
 
 export const GlobalStyles = createGlobalStyle`
@@ -17,6 +18,10 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+p {
+    font-size: 1.3rem;
 }
 
 * {

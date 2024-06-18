@@ -4,6 +4,7 @@ import ProjectItemCard from "@/components/projects-item-card";
 import { Projects } from "../utilities/data";
 import styled from "styled-components";
 import Image from "next/image";
+import { dmSerifDisplay } from "../utilities/fonts";
 
 const Hero = styled.section`
 	display: grid;
@@ -21,8 +22,8 @@ const Hero = styled.section`
 			margin: 0 0 1rem 0;
 		}
 		p {
-			font-size: 1.5rem;
 			margin: 0;
+			font-size: 1.5rem;
 		}
 	}
 
@@ -33,9 +34,9 @@ const Hero = styled.section`
 		border-radius: 1.5rem;
 		aspect-ratio: 1/1;
 
+		box-shadow: -10px 18px 0px #000;
 		.img {
 			border: 0.5rem solid black;
-			border-radius: 1.5rem !important;
 			place-self: center;
 			border-radius: 1rem;
 		}
@@ -45,6 +46,10 @@ const Hero = styled.section`
 
 const ProjectSection = styled.section`
 	background-color: #fafafa;
+	h2 {
+		font-size: 3rem;
+		margin: 0 0 5rem 0;
+	}
 `;
 
 export default function Home() {
@@ -87,10 +92,6 @@ export default function Home() {
 				<ProjectSection>
 					<Container>
 						<h2>Projects</h2>
-						<p>
-							These are some of the projects I did that I found interesting.
-							There are more coming.
-						</p>
 
 						{/* List of Projects */}
 						{Projects.map((project) => (
