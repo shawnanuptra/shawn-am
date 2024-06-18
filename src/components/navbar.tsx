@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { dmSerifDisplay, roboto } from "@/utilities/fonts";
+import { Container } from "./styles";
 
 const StyledHeader = styled.div`
-	display: flex;
+	/* display: flex; */
 	padding: 1rem 3vw;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 	justify-content: space-between;
 	place-items: center;
+	font-size: 14px;
 
 	/* navigation */
 	ul {
+		margin: 0;
 		display: flex;
 		flex-direction: row;
 		list-style-type: none;
@@ -23,7 +26,7 @@ const StyledHeader = styled.div`
 `;
 
 const Logo = styled.span`
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	span {
 		font-weight: normal;
@@ -33,25 +36,36 @@ const Logo = styled.span`
 `;
 
 const SayHi = styled.li`
-	background-color: purple;
+	background-color: black;
 	color: white;
 	padding: 0.7rem 1.5rem;
 	border-radius: 0.5rem;
 `;
 
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	place-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+`;
+
 const Navbar = () => {
 	return (
 		<StyledHeader>
-			<Logo className={roboto.className}>
-				Shawn A. M.<span className={roboto.className}> Portfolio</span>
-			</Logo>
-			<nav>
-				<ul>
-					<li>Projects</li>
-					<li>Resume</li>
-					<SayHi>Say hi!</SayHi>
-				</ul>
-			</nav>
+			<Wrapper>
+				<Logo className={roboto.className}>
+					Shawn A. M.<span className={roboto.className}> Portfolio</span>
+				</Logo>
+				<nav>
+					<ul>
+						<li>Projects</li>
+						<li>Resume</li>
+						<SayHi>Say hi!</SayHi>
+					</ul>
+				</nav>
+			</Wrapper>
 		</StyledHeader>
 	);
 };
