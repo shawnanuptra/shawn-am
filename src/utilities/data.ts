@@ -29,3 +29,13 @@ export const Projects: Project[] = [
 		imgSource: "/express.png",
 	},
 ];
+
+export interface SocialLink {
+	github: string;
+	linkedIn: string;
+}
+
+export const SocialLinks: SocialLink = {
+	github: "https://www.github.com/shawnanuptra",
+	linkedIn: "https://www.linkedin.com/in/anuptra",
+};
