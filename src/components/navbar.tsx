@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { dmSerifDisplay, inter } from "@/utilities/fonts";
 import { Container } from "./styles";
+import Link from "next/link";
 
 const StyledHeader = styled.div`
 	/* display: flex; */
@@ -57,7 +58,9 @@ const Navbar = () => {
 		<StyledHeader>
 			<Wrapper>
 				<Logo className={inter.className}>
-					Shawn A. M.<span className={inter.className}> Portfolio</span>
+					<Link href={"/"}>
+						Shawn A. M.<span className={inter.className}> Portfolio</span>
+					</Link>
 				</Logo>
 				<nav>
 					<ul>
