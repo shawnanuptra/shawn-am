@@ -1,10 +1,26 @@
 import { Project, Projects } from "@/utilities/data";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import React from "react";
 
-const ProjectPage = ({ project }: any) => {
-	return <div>{project.title}</div>;
+interface IProjectPage {
+	project: Project;
+}
+const ProjectPage = ({ project }: IProjectPage) => {
+	return (
+		<>
+			<Head>
+				<meta name='viewport' content='width=device-width, initial-scale=1' />
+				<meta charSet='utf-8' />
+				<title>{project.title}</title>
+				<meta name='Description' content={project.description}></meta>
+			</Head>
+			<section>
+				<div>{project.title}</div>
+			</section>
+		</>
+	);
 };
 
 export default ProjectPage;
