@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { dmSerifDisplay, roboto } from "@/utilities/fonts";
+import { dmSerifDisplay, inter } from "@/utilities/fonts";
 import { Container } from "./styles";
 
 const StyledHeader = styled.div`
@@ -56,8 +56,8 @@ const Navbar = () => {
 	return (
 		<StyledHeader>
 			<Wrapper>
-				<Logo className={roboto.className}>
-					Shawn A. M.<span className={roboto.className}> Portfolio</span>
+				<Logo className={inter.className}>
+					Shawn A. M.<span className={inter.className}> Portfolio</span>
 				</Logo>
 				<nav>
 					<ul>

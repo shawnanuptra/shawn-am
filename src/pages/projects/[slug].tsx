@@ -16,13 +16,14 @@ interface Props {
 
 const Title = styled.h1`
 	font-size: 3rem;
-	padding-bottom: 1rem;
-	border-bottom: 1px solid grey;
+	/* padding-bottom: 1rem;
+	border-bottom: 1px solid grey; */
 `;
 const H2 = styled.h2`
 	font-size: 2rem;
-	padding-bottom: 1rem;
-	border-bottom: 1px solid grey;
+	margin: 2.5rem 0 2rem;
+	padding-top: 2.5rem;
+	border-top: 1px solid grey;
 `;
 const H3 = styled.h3`
 	font-size: 1.5rem;
@@ -40,6 +41,7 @@ const Link = styled.a`
 
 const P = styled.p`
 	line-height: 1.2;
+	margin: 1.25rem 0;
 `;
 
 const ImageWrapper = styled.div``;

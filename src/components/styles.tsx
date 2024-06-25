@@ -12,7 +12,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    background-color: #F0F0F0;
+    background-color: #FDFDFD;
 }
 
 a {
