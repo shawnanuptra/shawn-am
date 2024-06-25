@@ -9,6 +9,9 @@ import { promises as fs } from "fs";
 import { Container } from "@/components/styles";
 import styled from "styled-components";
 import Image, { ImageProps } from "next/image";
+import { useEffect } from "react";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark.css";
 
 interface Props {
 	mdxSource: MDXRemoteSerializeResult;
@@ -72,6 +75,12 @@ const components = {
 };
 
 const ProjectPage = ({ mdxSource }: Props) => {
+	useEffect(() => {
+		document.querySelectorAll("pre code").forEach((block) => {
+			hljs.highlightElement(block as HTMLElement);
+		});
+	}, []);
+
 	return (
 		<>
 			<Container>
