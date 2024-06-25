@@ -64,7 +64,9 @@ const Navbar = () => {
 				</Logo>
 				<nav>
 					<ul>
-						<li>Projects</li>
+						<Link href={"#projects"}>
+							<li>Projects</li>
+						</Link>
 						<li>Resume</li>
 						<SayHi>Say hi!</SayHi>
 					</ul>

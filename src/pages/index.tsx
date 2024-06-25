@@ -50,7 +50,9 @@ const ProjectSection = styled.section`
 		font-size: 3rem;
 		margin: 0 0 5rem 0;
 	}
-
+	#projects {
+		scroll-margin-top: 5rem;
+	}
 	.projects-grid {
 		display: grid;
 		grid-template-columns: auto auto;
@@ -98,7 +100,7 @@ export default function Home() {
 				</Container>
 				<ProjectSection>
 					<Container>
-						<h2>Projects</h2>
+						<h2 id='projects'>Projects</h2>
 
 						<div className='projects-grid'>
 							{/* List of Projects */}
