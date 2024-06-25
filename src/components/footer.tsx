@@ -4,12 +4,15 @@ import { Container } from "./styles";
 import { Projects, SocialLinks } from "@/utilities/data";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
 
 const Wrapper = styled.footer`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
+	color: white;
+	background-color: black;
 
 	h2 {
 		display: inline;
@@ -26,7 +29,7 @@ const Wrapper = styled.footer`
 		flex-direction: row;
 		gap: 3rem;
 		.project-item {
-			font-weight: bold;
+			/* font-weight: bold; */
 			cursor: pointer;
 			font-size: 1rem;
 		}
@@ -39,30 +42,39 @@ const Wrapper = styled.footer`
 		margin: 1rem 0;
 	}
 `;
+
+const FooterContainer = styled.div`
+	background-color: black;
+	color: #fafafa;
+`;
 const Footer = () => {
 	return (
-		<Container>
-			<Wrapper>
-				<h2>
-					<strong>Shawn A. M.</strong> Portfolio
-				</h2>
-				<div className='projects'>
-					{Projects.map((project) => (
-						<p className='project-item'>{project.title}</p>
-					))}
-				</div>
-				<div className='socials'>
-					<a href={SocialLinks.linkedIn} target='_blank'>
-						<FaLinkedin />
-					</a>
+		<FooterContainer>
+			<Container>
+				<Wrapper>
+					<h2>
+						<Link href={"/"}>
+							<strong>Shawn A. M.</strong> Portfolio
+						</Link>
+					</h2>
+					<div className='projects'>
+						{Projects.map((project) => (
+							<p className='project-item'>{project.title}</p>
+						))}
+					</div>
+					<div className='socials'>
+						<a href={SocialLinks.linkedIn} target='_blank'>
+							<FaLinkedin />
+						</a>
 
-					<a href={SocialLinks.github} target='_blank'>
-						<FaGithub />
-					</a>
-				</div>
-				<p>Shawn A. Martin @ 2024</p>
-			</Wrapper>
-		</Container>
+						<a href={SocialLinks.github} target='_blank'>
+							<FaGithub />
+						</a>
+					</div>
+					<p>Shawn A. Martin @ 2024</p>
+				</Wrapper>
+			</Container>
+		</FooterContainer>
 	);
 };
 
