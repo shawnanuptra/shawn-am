@@ -21,7 +21,7 @@ a {
 }
 
 p {
-    font-size: 1.3rem;
+    font-size: 1.125rem;
 }
 
 * {

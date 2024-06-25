@@ -27,8 +27,8 @@ export const Projects: Project[] = [
 		imgSource: "/cameo.png",
 	},
 	{
-		slug: "api-with-crud-functionality-with-express",
-		title: "API with CRUD Functionality with Express",
+		slug: "api-in-express-app",
+		title: "API in Express App",
 		description:
 			"This project is about making an API to access a local data. The API works within a Node.js application wrapped in Express. An automatic API doc was also used using auto-generated documentation by APIDOC.",
 		imgSource: "/express.png",
