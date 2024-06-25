@@ -67,7 +67,9 @@ const Navbar = () => {
 						<Link href={"#projects"}>
 							<li>Projects</li>
 						</Link>
-						<li>Resume</li>
+						<a href='/Shawn-CV.pdf' download={"testing"}>
+							<li>Resume</li>
+						</a>
 						<SayHi>Say hi!</SayHi>
 					</ul>
 				</nav>
