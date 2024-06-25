@@ -59,7 +59,9 @@ const Footer = () => {
 					</h2>
 					<div className='projects'>
 						{Projects.map((project) => (
-							<p className='project-item'>{project.title}</p>
+							<Link href={`/projects/${project.slug}`}>
+								<p className='project-item'>{project.title}</p>
+							</Link>
 						))}
 					</div>
 					<div className='socials'>
