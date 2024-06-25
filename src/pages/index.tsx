@@ -50,6 +50,13 @@ const ProjectSection = styled.section`
 		font-size: 3rem;
 		margin: 0 0 5rem 0;
 	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		gap: 2rem;
+	}
 `;
 
 export default function Home() {
@@ -93,10 +100,12 @@ export default function Home() {
 					<Container>
 						<h2>Projects</h2>
 
-						{/* List of Projects */}
-						{Projects.map((project) => (
-							<ProjectItemCard project={project} />
-						))}
+						<div className='projects-grid'>
+							{/* List of Projects */}
+							{Projects.map((project) => (
+								<ProjectItemCard project={project} />
+							))}
+						</div>
 					</Container>
 				</ProjectSection>
 			</main>

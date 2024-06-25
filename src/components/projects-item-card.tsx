@@ -3,17 +3,23 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import { dmSerifDisplay } from "../utilities/fonts";
+import Link from "next/link";
 
 const Wrapper = styled.div`
 	display: grid;
-	grid-template-columns: 1fr auto 1.3fr;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+
+	width: 100%;
+	height: 100%;
+
 	min-height: 400px;
 	border-radius: 1rem;
 	background-color: white;
 
 	border: 0.5rem solid black;
 
-	padding: 3rem;
+	padding: 2rem;
 	margin: 0 0 4rem 0;
 
 	transition: all 0.1s ease-out;
@@ -31,6 +37,7 @@ const Wrapper = styled.div`
 	.image-wrapper {
 		position: relative;
 		width: 100%;
+		height: auto;
 		.img {
 			padding: 1rem;
 		}
@@ -48,7 +55,7 @@ const Wrapper = styled.div`
 	}
 	.separator {
 		content: "";
-		width: 0.3rem;
+		height: 0.3rem;
 		background-color: black;
 		border-radius: 99px;
 		height: 100%;
@@ -62,23 +69,23 @@ interface PropInterface {
 const ProjectItemCard = ({ project }: PropInterface) => {
 	//todo: add more details on hover! maybe like stars or something?
 	return (
-		<Wrapper>
-			<div className='image-wrapper'>
-				<Image
-					src={project.imgSource}
-					alt='temporary'
-					fill={true}
-					objectFit='contain'
-					className='img'
-				/>
-			</div>
-			<div className='separator'></div>
-
-			<div className='content'>
-				<h3>{project.title}</h3>
-				<p>{project.description}</p>
-			</div>
-		</Wrapper>
+		<Link href={`/projects/${project.slug}`}>
+			<Wrapper>
+				<div className='image-wrapper'>
+					<Image
+						src={project.imgSource}
+						alt='temporary'
+						fill={true}
+						objectFit='contain'
+						className='img'
+					/>
+				</div>
+				<div className='content'>
+					<h3>{project.title}</h3>
+					<p>{project.description}</p>
+				</div>
+			</Wrapper>
+		</Link>
 	);
 };
 
