@@ -64,10 +64,10 @@ const Navbar = () => {
 				</Logo>
 				<nav>
 					<ul>
-						<Link href={"#projects"}>
+						<Link href={"/#projects"}>
 							<li>Projects</li>
 						</Link>
-						<a href='/Shawn-CV.pdf' download={"testing"}>
+						<a href='/Shawn-CV.pdf' download={"Shawn-CV"}>
 							<li>Resume</li>
 						</a>
 						<SayHi>Say hi!</SayHi>
