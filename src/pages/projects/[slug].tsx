@@ -17,6 +17,16 @@ interface Props {
 	mdxSource: MDXRemoteSerializeResult;
 }
 
+const BlogContainer = styled.div`
+	max-width: 1000px;
+	margin: 5rem auto;
+	border: 2px solid #202020;
+	padding: 2.5rem;
+	border-radius: 1.25rem;
+
+	background-color: #fafafa;
+`;
+
 const Title = styled.h1`
 	font-size: 3rem;
 	/* padding-bottom: 1rem;
@@ -30,30 +40,25 @@ const H2 = styled.h2`
 `;
 const H3 = styled.h3`
 	font-size: 1.5rem;
-	display: inline-block;
-	padding-bottom: 0.5rem;
-	border-bottom: 1px solid grey;
+	margin-top: 3rem;
 `;
 
-const Link = styled.a`
-	color: black;
+const StyledA = styled.a`
+	color: #202020;
 	text-decoration: underline;
 	cursor: pointer;
 	font-weight: bold;
 `;
 
 const P = styled.p`
-	line-height: 1.2;
 	margin: 1.25rem 0;
 `;
-
-const ImageWrapper = styled.div``;
 
 const components = {
 	h1: (props: any) => <Title>{props.children}</Title>,
 	h2: (props: any) => <H2>{props.children}</H2>,
 	h3: (props: any) => <H3>{props.children}</H3>,
-	a: (props: any) => <Link>{props.children}</Link>,
+	a: (props: any) => <StyledA href={props.href}>{props.children}</StyledA>,
 	p: (props: any) => <P>{props.children}</P>,
 
 	img: (props: any) => (
@@ -63,8 +68,9 @@ const components = {
 			height={20}
 			style={{
 				width: "auto",
-				height: "100%",
+				height: "auto",
 				maxHeight: "800px",
+				maxWidth: "100%",
 				textAlign: "center",
 				display: "block",
 				margin: "0 auto",
@@ -83,9 +89,9 @@ const ProjectPage = ({ mdxSource }: Props) => {
 
 	return (
 		<>
-			<Container>
+			<BlogContainer>
 				<MDXRemote {...mdxSource} components={components} />
-			</Container>
+			</BlogContainer>
 		</>
 	);
 };

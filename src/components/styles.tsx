@@ -14,6 +14,7 @@ body {
     margin: 0;
     background-color: #FDFDFD;
     scroll-behavior: smooth;
+    color: #202020;
 }
 
 a {
@@ -23,6 +24,8 @@ a {
 
 p {
     font-size: 1.125rem;
+    line-height: 1.4;
+
 }
 
 * {

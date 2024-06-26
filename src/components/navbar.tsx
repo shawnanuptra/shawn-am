@@ -38,7 +38,7 @@ const Logo = styled.span`
 `;
 
 const SayHi = styled.li`
-	background-color: black;
+	background-color: #202020;
 	color: white;
 	padding: 0.7rem 1.5rem;
 	border-radius: 0.5rem;
