@@ -45,7 +45,17 @@ const Hero = styled.section`
 `;
 
 const ProjectSection = styled.section`
-	background-color: #fafafa;
+	// add separator line
+	&::before {
+		content: "";
+		display: block;
+		width: 15rem;
+		height: 0.25rem;
+		border-radius: 99px;
+		background-color: #202020;
+		margin: 0 auto;
+	}
+
 	h2 {
 		font-size: 3rem;
 		margin: 0 0 5rem 0;

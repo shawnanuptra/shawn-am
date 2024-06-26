@@ -46,6 +46,7 @@ const Wrapper = styled.footer`
 const FooterContainer = styled.div`
 	background-color: black;
 	color: #fafafa;
+	margin-top: 5rem;
 `;
 const Footer = () => {
 	return (
