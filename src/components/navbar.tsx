@@ -70,11 +70,9 @@ const Navbar = () => {
 						<a href='/Shawn-CV.pdf' download={"Shawn-CV"}>
 							<li>Resume</li>
 						</a>
-						<SayHi>
-							<a href='mailto: shawnanuptraamartin@gmail.com' target='_blank'>
-								Say hi!
-							</a>
-						</SayHi>
+						<a href='mailto: shawnanuptraamartin@gmail.com' target='_blank'>
+							<SayHi>Say hi!</SayHi>
+						</a>
 					</ul>
 				</nav>
 			</Wrapper>
