@@ -12,6 +12,7 @@ import Image, { ImageProps } from "next/image";
 import { useEffect } from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
+import { device } from "@/utilities/deviceSize";
 
 interface Props {
 	mdxSource: MDXRemoteSerializeResult;
@@ -25,12 +26,20 @@ const BlogContainer = styled.div`
 	border-radius: 1.25rem;
 
 	background-color: #fafafa;
+
+	@media ${device.sm} {
+		border: 0;
+		margin: 0 auto;
+	}
 `;
 
 const Title = styled.h1`
 	font-size: 3rem;
 	/* padding-bottom: 1rem;
 	border-bottom: 1px solid grey; */
+	@media ${device.sm} {
+		font-size: 2.5rem;
+	}
 `;
 const H2 = styled.h2`
 	font-size: 2rem;
@@ -48,10 +57,16 @@ const StyledA = styled.a`
 	text-decoration: underline;
 	cursor: pointer;
 	font-weight: bold;
+	white-space: wrap;
 `;
 
 const P = styled.p`
 	margin: 1.25rem 0;
+	color: #202020d5;
+	@media ${device.sm} {
+		font-size: 1rem;
+		margin: 0 auto;
+	}
 `;
 
 const components = {
@@ -60,7 +75,9 @@ const components = {
 	h3: (props: any) => <H3>{props.children}</H3>,
 	a: (props: any) => <StyledA href={props.href}>{props.children}</StyledA>,
 	p: (props: any) => <P>{props.children}</P>,
-
+	code: (props: any) => (
+		<code style={{ whiteSpace: "pre-wrap !important" }}>{props.children}</code>
+	),
 	img: (props: any) => (
 		<Image
 			sizes='100vw'
@@ -82,6 +99,7 @@ const components = {
 
 const ProjectPage = ({ mdxSource }: Props) => {
 	useEffect(() => {
+		hljs.configure({});
 		document.querySelectorAll("pre code").forEach((block) => {
 			hljs.highlightElement(block as HTMLElement);
 		});

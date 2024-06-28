@@ -2,9 +2,9 @@
 
 This mobile-first website is created for an artificial use case of reporting bridle path damage. For more specific instructions, you can click the link below. It was an assignment during my study in Sunderland Uni.
 
-h[ttps://docs.google.com/document/d/10Gjn6gvvqFhjnYN8RRPFXX74GLPqK3pXCYrOBWeXhOY/edit](https://docs.google.com/document/d/10Gjn6gvvqFhjnYN8RRPFXX74GLPqK3pXCYrOBWeXhOY/edit)
+[View assignment brief here.](https://docs.google.com/document/d/10Gjn6gvvqFhjnYN8RRPFXX74GLPqK3pXCYrOBWeXhOY/edit)
 
-[https://assessment2-psi.vercel.app/](https://assessment2-psi.vercel.app/)
+[View live project here.](https://assessment2-psi.vercel.app/)
 
 ## UI/UX Design
 
@@ -12,7 +12,7 @@ The start of this project starts with designing the UI Flowchart. The flowchart 
 
 ![UI Flowchart.png](/bridle-path-damage-reporting-app/UI_Flowchart.png)
 
-The Figma mockups were made accordingly with a mobile-first view in mind. Find the complete Figma project here. [https://www.figma.com/design/hFM2D7u2Uk93YRl9uaQSCt/Assessment-2?node-id=0%3A1&t=UgJ3CtUv8049WXlX-1](https://www.figma.com/design/hFM2D7u2Uk93YRl9uaQSCt/Assessment-2?node-id=0%3A1&t=UgJ3CtUv8049WXlX-1)
+The Figma mockups were made accordingly with a mobile-first view in mind. Find the complete Figma project [here.](https://www.figma.com/design/hFM2D7u2Uk93YRl9uaQSCt/Assessment-2?node-id=0%3A1&t=UgJ3CtUv8049WXlX-1)
 
 ![Untitled](/bridle-path-damage-reporting-app/Untitled.png)
 
