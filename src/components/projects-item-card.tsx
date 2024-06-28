@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { dmSerifDisplay } from "../utilities/fonts";
 import Link from "next/link";
+import { device } from "@/utilities/deviceSize";
 
 const Wrapper = styled.div`
 	display: grid;
@@ -17,30 +18,27 @@ const Wrapper = styled.div`
 	border-radius: 1rem;
 	background-color: white;
 
-	border: 0.5rem solid black;
+	border: 0.5rem solid #202020;
 
 	padding: 2rem;
 	margin: 0 0 4rem 0;
 
 	transition: all 0.1s ease-out;
 
-	box-shadow: -5px 10px 0px #000;
+	box-shadow: -5px 10px 0px #202020;
 
 	place-self: center;
 
 	&:hover {
 		transform: translateX(3px) translateY(-5px);
 		cursor: pointer;
-		box-shadow: -13px 18px 0px #000;
+		box-shadow: -13px 18px 0px #202020;
 	}
 
 	.image-wrapper {
 		position: relative;
 		width: 100%;
 		height: auto;
-		.img {
-			padding: 1rem;
-		}
 	}
 
 	.content {
@@ -56,9 +54,26 @@ const Wrapper = styled.div`
 	.separator {
 		content: "";
 		height: 0.3rem;
-		background-color: black;
+		background-color: #202020;
 		border-radius: 99px;
 		height: 100%;
+	}
+
+	@media ${device.sm} {
+		padding: 1rem;
+		grid-template-rows: 1fr auto;
+		margin: 0 0 1rem 0;
+		border-width: 0.4rem;
+
+		.content {
+			padding: 1rem;
+			h3 {
+				font-size: 1.5rem;
+			}
+			p {
+				font-size: 1rem;
+			}
+		}
 	}
 `;
 
@@ -77,7 +92,6 @@ const ProjectItemCard = ({ project }: PropInterface) => {
 						alt='temporary'
 						fill={true}
 						objectFit='contain'
-						className='img'
 					/>
 				</div>
 				<div className='content'>

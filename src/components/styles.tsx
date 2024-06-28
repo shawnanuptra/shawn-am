@@ -1,3 +1,4 @@
+import { device } from "@/utilities/deviceSize";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Container = styled.div`
@@ -5,6 +6,11 @@ export const Container = styled.div`
 	/* background-color: teal; */
 	margin: 0 auto;
 	padding: 5rem 0;
+
+	@media ${device.sm} {
+		max-width: 90vw;
+		padding: 1rem;
+	}
 `;
 
 export const GlobalStyles = createGlobalStyle`
