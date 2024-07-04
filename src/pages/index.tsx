@@ -179,7 +179,7 @@ export default function Home() {
 						<div className='projects-grid'>
 							{/* List of Projects */}
 							{Projects.map((project) => (
-								<ProjectItemCard project={project} />
+								<ProjectItemCard project={project} key={project.title} />
 							))}
 						</div>
 					</Container>
