@@ -19,6 +19,16 @@ const Wrapper = styled.footer`
 		display: inline;
 		font-weight: 400;
 		font-size: 1.3rem;
+
+		padding: 0.7rem 1.5rem;
+		border-radius: 0.5rem;
+		transition: all 0.1s ease-out;
+
+		&:hover {
+			transform: translateX(1px) translateY(-1px);
+			box-shadow: -5px 5px 0px #fafafa;
+			outline: 2px solid #fafafa;
+		}
 	}
 
 	p {
@@ -28,11 +38,21 @@ const Wrapper = styled.footer`
 	.projects {
 		display: flex;
 		flex-direction: row;
-		gap: 3rem;
+		gap: 1rem;
 		.project-item {
 			/* font-weight: bold; */
 			cursor: pointer;
 			font-size: 1rem;
+
+			padding: 0.7rem 1.5rem;
+			border-radius: 0.5rem;
+			transition: all 0.1s ease-out;
+
+			&:hover {
+				transform: translateX(1px) translateY(-1px);
+				box-shadow: -5px 5px 0px #fafafa;
+				outline: 2px solid #fafafa;
+			}
 		}
 	}
 	.socials {
@@ -41,6 +61,18 @@ const Wrapper = styled.footer`
 		gap: 1rem;
 		font-size: 1.5rem;
 		margin: 1rem 0;
+
+		& > * {
+			padding: 0.5rem 1rem;
+			border-radius: 0.5rem;
+			transition: all 0.1s ease-out;
+
+			&:hover {
+				transform: translateX(1px) translateY(-1px);
+				box-shadow: -5px 5px 0px #fafafa;
+				outline: 2px solid #fafafa;
+			}
+		}
 	}
 
 	@media ${device.sm} {
@@ -56,6 +88,7 @@ const Wrapper = styled.footer`
 		align-items: flex-start;
 		h2 {
 			grid-area: logo;
+			padding: 0.2rem 0;
 		}
 		.projects {
 			display: flex;
@@ -65,14 +98,19 @@ const Wrapper = styled.footer`
 			.project-item {
 				font-size: 0.8rem;
 				margin: 0;
+				padding: 0.2rem 0;
 			}
 		}
+
 		.socials {
 			display: flex;
 			flex-direction: row;
 			gap: 0.5rem;
 			margin: 0 0 0 1.5rem;
 			grid-area: socials;
+			& > * {
+				padding: 0 0.2rem;
+			}
 		}
 
 		.copyright {
