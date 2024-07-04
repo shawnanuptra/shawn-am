@@ -23,6 +23,7 @@ const Wrapper = styled.footer`
 		padding: 0.7rem 1.5rem;
 		border-radius: 0.5rem;
 		transition: all 0.1s ease-out;
+		cursor: pointer;
 
 		&:hover {
 			transform: translateX(1px) translateY(-1px);
