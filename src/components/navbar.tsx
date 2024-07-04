@@ -25,6 +25,29 @@ const StyledHeader = styled.div`
 		padding: 0;
 		gap: 5rem;
 		place-items: center;
+
+		li {
+			transition: all 0.1s ease-out;
+			&:hover {
+				transform: translateX(1px) translateY(-1px);
+				box-shadow: -5px 5px 0px #202020;
+				color: #202020;
+				background-color: #fafafa;
+				outline: 2px solid #202020;
+			}
+		}
+
+		.my-li {
+			padding: 0.7rem 1.5rem;
+			border-radius: 0.5rem;
+			transition: all 0.1s ease-out;
+
+			&:hover {
+				transform: translateX(1px) translateY(-1px);
+				box-shadow: -5px 5px 0px #202020;
+				outline: 2px solid #202020;
+			}
+		}
 	}
 
 	.mobileMenu,
@@ -163,10 +186,10 @@ const Navbar = () => {
 					<nav>
 						<ul>
 							<Link href={"/#projects"}>
-								<li>Projects</li>
+								<li className='my-li'>Projects</li>
 							</Link>
 							<a href='/Shawn-CV.pdf' download={"Shawn-CV"}>
-								<li>Resume</li>
+								<li className='my-li'>Resume</li>
 							</a>
 							<a href='mailto: shawnanuptraamartin@gmail.com' target='_blank'>
 								<SayHi>Say hi!</SayHi>
