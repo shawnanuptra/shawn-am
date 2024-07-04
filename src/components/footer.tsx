@@ -139,7 +139,7 @@ const Footer = () => {
 					</h2>
 					<div className='projects'>
 						{Projects.map((project) => (
-							<Link href={`/projects/${project.slug}`}>
+							<Link key={project.title} href={`/projects/${project.slug}`}>
 								<p className='project-item'>{project.title}</p>
 							</Link>
 						))}

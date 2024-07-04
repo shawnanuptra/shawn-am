@@ -93,6 +93,7 @@ const components = {
 				margin: "0 auto",
 			}}
 			{...(props as ImageProps)}
+			alt={""}
 		/>
 	),
 };

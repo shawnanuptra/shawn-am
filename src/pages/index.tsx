@@ -154,7 +154,7 @@ export default function Home() {
 							<h1>Hello there!</h1>
 							{/* todo: idea! make a good quote after every refresh on wish you all the best. */}
 							<p>
-								I'm Shawn.
+								I&apos;m Shawn.
 								<br />
 								I like making cool stuff on the web.
 								<br />
