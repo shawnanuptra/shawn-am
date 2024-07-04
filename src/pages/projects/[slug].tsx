@@ -101,6 +101,7 @@ const components = {
 const ProjectPage = ({ mdxSource }: Props) => {
 	useEffect(() => {
 		hljs.configure({});
+		hljs.unregisterLanguage("haskell");
 		document.querySelectorAll("pre code").forEach((block) => {
 			hljs.highlightElement(block as HTMLElement);
 		});
