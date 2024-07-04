@@ -163,7 +163,7 @@ export default function Home() {
 						</div>
 						<div className='hero-img-wrapper'>
 							<Image
-								src={"/profile.jpg"}
+								src={"/profile.JPG"}
 								fill={true}
 								objectFit='cover'
 								alt='Profile picture of me'
