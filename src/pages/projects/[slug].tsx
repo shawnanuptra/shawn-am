@@ -6,13 +6,12 @@ import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import { promises as fs } from "fs";
-import { Container } from "@/components/styles";
 import styled from "styled-components";
 import Image, { ImageProps } from "next/image";
 import { useEffect } from "react";
 import { device } from "@/utilities/deviceSize";
-import Script from "next/script";
-
+import hljs from "highlight.js";
+import js from "highlight.js/lib/languages/javascript";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
 }
@@ -102,12 +101,13 @@ const components = {
 const ProjectPage = ({ mdxSource }: Props) => {
     useEffect(() => {
         // const hljs = require("highlight.js");
-        // 	hljs.configure({});
-        // 	hljs.unregisterLanguage("haskell");
-        // document.querySelectorAll("pre code").forEach((block) => {
-        // 	hljs.highlightElement(block as HTMLElement)
-        // });
-    }, []);
+        hljs.configure({});
+        hljs.registerLanguage("javascript", js);
+        hljs.unregisterLanguage("haskell");
+        document.querySelectorAll("pre code").forEach((block) => {
+            hljs.highlightElement(block as HTMLElement);
+        });
+    });
 
     return (
         <>
@@ -116,11 +116,6 @@ const ProjectPage = ({ mdxSource }: Props) => {
             </BlogContainer>
 
             {/* Highlight.js so don't go through build system */}
-            <Script type='module' id='hljs-script'>
-                import hljs from
-                'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/highlight.min.js';
-                hljs.highlightAll();
-            </Script>
         </>
     );
 };

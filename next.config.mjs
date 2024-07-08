@@ -4,7 +4,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  transpilePackages: ['highlight.js']
+  experimental: {
+    serverComponentsExternalPackages: ['highlight.js'],
+  },
 };
 
 export default nextConfig;
