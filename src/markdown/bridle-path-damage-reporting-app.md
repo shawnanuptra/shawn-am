@@ -30,18 +30,18 @@ The app consists of 2 main ‘faces’: the public-facing side where the general
 
 ```jsx
 <BrowserRouter>
-	<FormContextProvider>
-		<Routes>
-			<Route path='/' element={<App />} />
-			<Route path='/q1' element={<Question1 />} />
-			<Route path='/q2' element={<Question2 />} />
-			<Route path='/q3' element={<Question3 />} />
-			<Route path='/error' element={<ErrorScreen />} />
-			<Route path='/home' element={<CouncilHome />} />
-			<Route path='/in-progress' element={<InProgress />} />
-			<Route path='/archive' element={<Archive />} />
-		</Routes>
-	</FormContextProvider>
+    <FormContextProvider>
+        <Routes>
+            <Route path='/' element={<App />} />
+            <Route path='/q1' element={<Question1 />} />
+            <Route path='/q2' element={<Question2 />} />
+            <Route path='/q3' element={<Question3 />} />
+            <Route path='/error' element={<ErrorScreen />} />
+            <Route path='/home' element={<CouncilHome />} />
+            <Route path='/in-progress' element={<InProgress />} />
+            <Route path='/archive' element={<Archive />} />
+        </Routes>
+    </FormContextProvider>
 </BrowserRouter>
 ```
 
@@ -53,9 +53,9 @@ const nav = useNavigate();
 
 //simple check. if user is not signed in (a public member), redirect to nav
 useEffect(() => {
-	if (user === null) {
-		nav("/");
-	}
+    if (user === null) {
+        nav("/");
+    }
 }, [auth]);
 ```
 
@@ -63,14 +63,14 @@ There are 2 question pages for the client to fill in a report, Question1.js and 
 
 ```jsx
 function handleNextPage() {
-	//check if radio buttons is not ticked
-	if (formContext.formState.type === "") {
-		// show overlay
-		toggleOverlay();
-	} else {
-		//go to next page if yes
-		nav("/q2");
-	}
+    //check if radio buttons is not ticked
+    if (formContext.formState.type === "") {
+        // show overlay
+        toggleOverlay();
+    } else {
+        //go to next page if yes
+        nav("/q2");
+    }
 }
 ```
 
@@ -80,26 +80,26 @@ The authentication is done using Firebase. More specifically, using a Google Sig
 
 ```jsx
 export async function signInWithGoogle(auth, provider) {
-	await signInWithPopup(auth, provider)
-		.then((result) => {
-			// This gives you a Google Access Token. You can use it to access the Google API.
-			const credential = GoogleAuthProvider.credentialFromResult(result);
-			const token = credential.accessToken;
-			// The signed-in user info.
-			const user = result.user;
+    await signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
 
-			console.log(user);
-		})
-		.catch((error) => {
-			// Handle Errors here.
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			// The email of the user's account used.
-			const email = error.customData.email;
-			// The AuthCredential type that was used.
-			const credential = GoogleAuthProvider.credentialFromError(error);
-			// ...
-		});
+            console.log(user);
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
 }
 ```
 

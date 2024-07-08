@@ -64,13 +64,13 @@ For example, to get all the data from the assets, we can create an endpoint ‘/
 
 ```jsx
 app.get("/assets", (req, res) => {
-	db.all("select * from assets", (err, rows) => {
-		//prints error, if err is not null
-		err && console.log(err.message);
+    db.all("select * from assets", (err, rows) => {
+        //prints error, if err is not null
+        err && console.log(err.message);
 
-		//show results, or message if there are none
-		rows ? res.jsonp(rows) : res.send("No assets registered");
-	});
+        //show results, or message if there are none
+        rows ? res.jsonp(rows) : res.send("No assets registered");
+    });
 });
 ```
 
@@ -80,14 +80,14 @@ We are also able to use parameters, for example to search a specific asset using
 
 ```jsx
 app.get("/assets/:id", (req, res) => {
-	const id = req.params.id;
-	db.get(`select * from assets where id = ${id}`, (err, rows) => {
-		//prints error, if err is not null
-		err && console.log(err.message);
+    const id = req.params.id;
+    db.get(`select * from assets where id = ${id}`, (err, rows) => {
+        //prints error, if err is not null
+        err && console.log(err.message);
 
-		//show results, or message if there are none
-		rows ? res.jsonp(rows) : res.send("No assets with specified id");
-	});
+        //show results, or message if there are none
+        rows ? res.jsonp(rows) : res.send("No assets with specified id");
+    });
 });
 ```
 
@@ -95,24 +95,24 @@ To add a new asset to the database, we use the **post** function.
 
 ```jsx
 app.post("/add", upload.array(), (req, res) => {
-	//get from POST form fields
-	const type = req.body.type;
-	const location = req.body.location;
+    //get from POST form fields
+    const type = req.body.type;
+    const location = req.body.location;
 
-	db.run(
-		"insert into assets (type, location) values (?, ?)",
-		type,
-		location,
-		(error) => {
-			if (error) {
-				console.log(error);
-				res.status(500);
-			} else {
-				res.status(201);
-			}
-			res.end();
-		}
-	);
+    db.run(
+        "insert into assets (type, location) values (?, ?)",
+        type,
+        location,
+        (error) => {
+            if (error) {
+                console.log(error);
+                res.status(500);
+            } else {
+                res.status(201);
+            }
+            res.end();
+        }
+    );
 });
 ```
 
@@ -121,41 +121,41 @@ This is the same with using **put** for updating a specific asset, and **delete*
 ```jsx
 // update specific id
 app.put("/assets/:id", upload.array(), (req, res) => {
-	const id = req.params.id;
-	//get from POST form fields
-	const type = req.body.type;
-	const location = req.body.location;
+    const id = req.params.id;
+    //get from POST form fields
+    const type = req.body.type;
+    const location = req.body.location;
 
-	db.run(
-		"update assets set type=?, location=? where id=?",
-		type,
-		location,
-		id,
-		(error) => {
-			if (error) {
-				console.log(error);
-				res.status(500);
-			} else {
-				res.status(200);
-			}
-			res.end();
-		}
-	);
+    db.run(
+        "update assets set type=?, location=? where id=?",
+        type,
+        location,
+        id,
+        (error) => {
+            if (error) {
+                console.log(error);
+                res.status(500);
+            } else {
+                res.status(200);
+            }
+            res.end();
+        }
+    );
 });
 
 // delete specific id
 app.delete("/assets/:id", function (req, res) {
-	const id = req.params.id;
+    const id = req.params.id;
 
-	db.run("DELETE from assets WHERE id=?", id, (error) => {
-		if (error) {
-			console.err(error);
-			res.status(500); //error
-		} else {
-			res.status(204); //deleted
-		}
-		res.end();
-	});
+    db.run("DELETE from assets WHERE id=?", id, (error) => {
+        if (error) {
+            console.err(error);
+            res.status(500); //error
+        } else {
+            res.status(204); //deleted
+        }
+        res.end();
+    });
 });
 ```
 
@@ -163,46 +163,48 @@ This Express app will also contain an API for a search function. This will made 
 
 ```jsx
 app.get("/search", (req, res) => {
-	//get the type and location params
-	const type = req.query.type || null;
-	const location = req.query.location || null;
+    //get the type and location params
+    const type = req.query.type || null;
+    const location = req.query.location || null;
 
-	//logic based on type and location params
-	switch (true) {
-		//if type and location is not null
-		case type !== null && location !== null:
-			db.all(
-				`select * from assets where upper(type) like upper('%${type}%') AND upper(location) like upper('%${location}%')`,
-				(err, rows) => {
-					//show results, or message if there are none
-					rows ? res.jsonp(rows) : res.send("No assets with specified queries");
-				}
-			);
-			break;
+    //logic based on type and location params
+    switch (true) {
+        //if type and location is not null
+        case type !== null && location !== null:
+            db.all(
+                `select * from assets where upper(type) like upper('%${type}%') AND upper(location) like upper('%${location}%')`,
+                (err, rows) => {
+                    //show results, or message if there are none
+                    rows
+                        ? res.jsonp(rows)
+                        : res.send("No assets with specified queries");
+                }
+            );
+            break;
 
-		//if type is not null, but location is
-		case type !== null && location === null:
-			//redirect to /type/:type
-			res.redirect(`../type/${type}`);
+        //if type is not null, but location is
+        case type !== null && location === null:
+            //redirect to /type/:type
+            res.redirect(`../type/${type}`);
 
-			break;
+            break;
 
-		//if type is null, but location is not null
-		case type === null && location !== null:
-			//redirect to /location/:location
-			res.redirect(`../location/${location}`);
-			break;
+        //if type is null, but location is not null
+        case type === null && location !== null:
+            //redirect to /location/:location
+            res.redirect(`../location/${location}`);
+            break;
 
-		//if both queries are null
-		case type === null && location === null:
-			//redirect to /assets (show all)
-			res.redirect("../assets");
-			break;
+        //if both queries are null
+        case type === null && location === null:
+            //redirect to /assets (show all)
+            res.redirect("../assets");
+            break;
 
-		default:
-			res.send("No results");
-			break;
-	}
+        default:
+            res.send("No results");
+            break;
+    }
 });
 ```
 
@@ -262,13 +264,13 @@ Using the [apidocjs.com](http://apidocjs.com) documentation, I created documenta
  *   HTTP/1.1 500 Internal Server Error
  */
 app.get("/assets", (req, res) => {
-	db.all("select * from assets", (err, rows) => {
-		//prints error, if err is not null
-		err && console.log(err.message);
+    db.all("select * from assets", (err, rows) => {
+        //prints error, if err is not null
+        err && console.log(err.message);
 
-		//show results, or message if there are none
-		rows ? res.jsonp(rows) : res.send("No assets registered");
-	});
+        //show results, or message if there are none
+        rows ? res.jsonp(rows) : res.send("No assets registered");
+    });
 });
 ```
 

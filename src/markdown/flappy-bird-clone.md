@@ -203,7 +203,8 @@ function startGame() {
 				//set new character style top value. adding the top value will move the element down => 'gravity'
 				//use prevGravCharTop as 'a point where the char starts falling'
 				character.style.top =
-					easeInQuad(gravFrame / 60, prevGravCharTop, 500, 1.15) + "px";
+					easeInQuad(gravFrame / 60, prevGravCharTop, 500, 1.15) +
+					"px";
 				//increments gravFrame to continue animation. easeInQuad will return diff values everytime setInterval is run
 				gravFrame++;
 			}

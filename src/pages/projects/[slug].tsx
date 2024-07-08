@@ -10,9 +10,8 @@ import { Container } from "@/components/styles";
 import styled from "styled-components";
 import Image, { ImageProps } from "next/image";
 import { useEffect } from "react";
-import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
 import { device } from "@/utilities/deviceSize";
+import Script from "next/script";
 
 interface Props {
 	mdxSource: MDXRemoteSerializeResult;
@@ -76,7 +75,9 @@ const components = {
 	a: (props: any) => <StyledA href={props.href}>{props.children}</StyledA>,
 	p: (props: any) => <P>{props.children}</P>,
 	code: (props: any) => (
-		<code style={{ whiteSpace: "pre-wrap !important" }}>{props.children}</code>
+		<code style={{ whiteSpace: "pre-wrap !important" }}>
+			{props.children}
+		</code>
 	),
 	img: (props: any) => (
 		<Image
@@ -100,11 +101,12 @@ const components = {
 
 const ProjectPage = ({ mdxSource }: Props) => {
 	useEffect(() => {
-		hljs.configure({});
-		hljs.unregisterLanguage("haskell");
-		document.querySelectorAll("pre code").forEach((block) => {
-			hljs.highlightElement(block as HTMLElement);
-		});
+		// const hljs = require("highlight.js");
+		// 	hljs.configure({});
+		// 	hljs.unregisterLanguage("haskell");
+		// document.querySelectorAll("pre code").forEach((block) => {
+		// 	hljs.highlightElement(block as HTMLElement)
+		// });
 	}, []);
 
 	return (
@@ -112,6 +114,13 @@ const ProjectPage = ({ mdxSource }: Props) => {
 			<BlogContainer>
 				<MDXRemote {...mdxSource} components={components} />
 			</BlogContainer>
+
+			{/* Highlight.js so don't go through build system */}
+			<Script type='module'>
+				import hljs from
+				'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/highlight.min.js';
+				hljs.highlightAll();
+			</Script>
 		</>
 	);
 };

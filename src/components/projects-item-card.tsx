@@ -91,7 +91,8 @@ const ProjectItemCard = ({ project }: PropInterface) => {
 						src={project.imgSource}
 						alt='temporary'
 						fill={true}
-						objectFit='contain'
+						sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
+						style={{ objectFit: "contain" }}
 					/>
 				</div>
 				<div className='content'>

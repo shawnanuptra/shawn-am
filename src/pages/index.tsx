@@ -163,9 +163,11 @@ export default function Home() {
 						</div>
 						<div className='hero-img-wrapper'>
 							<Image
+								sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
+								priority={true}
 								src={"/profile.JPG"}
 								fill={true}
-								objectFit='cover'
+								style={{ objectFit: "cover" }}
 								alt='Profile picture of me'
 								className='img'
 							/>
