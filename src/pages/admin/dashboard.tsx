@@ -1,5 +1,4 @@
 import { getSession, GetSessionParams } from "next-auth/react";
-import React from "react";
 
 const Dashboard = ({ session }: any) => {
     return (

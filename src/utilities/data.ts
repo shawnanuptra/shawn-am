@@ -1,5 +1,3 @@
-import { NextApiRequest } from "next";
-
 export interface Project {
     slug: string;
     title: string;
@@ -51,8 +49,4 @@ export const SocialLinks: SocialLink = {
 export interface LoginData {
     username: string;
     password: string;
-}
-
-export interface LoginFormReq extends NextApiRequest {
-    body: LoginData;
 }

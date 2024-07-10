@@ -1,17 +1,15 @@
-import { Project, Projects } from "@/utilities/data";
+import { Projects } from "@/utilities/data";
+import { device } from "@/utilities/deviceSize";
+import { promises as fs } from "fs";
+import hljs from "highlight.js";
+import js from "highlight.js/lib/languages/javascript";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
-import { ParsedUrlQuery } from "querystring";
-import React from "react";
-import { promises as fs } from "fs";
-import styled from "styled-components";
 import Image, { ImageProps } from "next/image";
+import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
-import { device } from "@/utilities/deviceSize";
-import hljs from "highlight.js";
-import js from "highlight.js/lib/languages/javascript";
+import styled from "styled-components";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
 }
