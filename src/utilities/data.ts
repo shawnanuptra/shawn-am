@@ -45,3 +45,8 @@ export const SocialLinks: SocialLink = {
     github: "https://www.github.com/shawnanuptra",
     linkedIn: "https://www.linkedin.com/in/anuptra",
 };
+
+export interface LoginData {
+    username: string;
+    password: string;
+}
