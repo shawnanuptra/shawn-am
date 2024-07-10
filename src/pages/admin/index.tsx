@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/styles";
 import { signIn, signOut, getSession, GetSessionParams } from "next-auth/react";
 import { useRouter } from "next/router";
