@@ -9,13 +9,18 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@portabletext/react": "^3.1.0",
+        "@sanity/image-url": "^1.0.2",
+        "@sanity/vision": "^3.49.0",
         "highlight.js": "^11.10.0",
         "next": "14.2.4",
         "next-auth": "^4.24.7",
         "next-mdx-remote": "^5.0.0",
+        "next-sanity": "^9.4.2",
         "react": "^18",
         "react-dom": "^18",
         "react-icons": "^5.2.1",
+        "sanity": "^3.49.0",
         "styled-components": "^6.1.11"
     },
     "devDependencies": {

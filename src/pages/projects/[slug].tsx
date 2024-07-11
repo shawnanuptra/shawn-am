@@ -29,7 +29,7 @@ const BlogContainer = styled.div`
     }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
     font-size: 3rem;
     /* padding-bottom: 1rem;
 	border-bottom: 1px solid grey; */
@@ -37,18 +37,18 @@ const Title = styled.h1`
         font-size: 2.5rem;
     }
 `;
-const H2 = styled.h2`
+export const H2 = styled.h2`
     font-size: 2rem;
     margin: 2.5rem 0 2rem;
     padding-top: 2.5rem;
     border-top: 1px solid grey;
 `;
-const H3 = styled.h3`
+export const H3 = styled.h3`
     font-size: 1.5rem;
     margin-top: 3rem;
 `;
 
-const StyledA = styled.a`
+export const StyledA = styled.a`
     color: #202020;
     text-decoration: underline;
     cursor: pointer;
@@ -56,7 +56,7 @@ const StyledA = styled.a`
     white-space: wrap;
 `;
 
-const P = styled.p`
+export const P = styled.p`
     margin: 1.25rem 0;
     color: #202020d5;
     @media ${device.sm} {
