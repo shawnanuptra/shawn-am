@@ -53,5 +53,6 @@ export default Login;
 
 export async function getServerSideProps(ctx: GetSessionParams | undefined) {
     const session = await getSession(ctx);
+    console.log("hit getserverside", session);
     return { props: { session } };
 }

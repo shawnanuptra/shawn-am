@@ -16,6 +16,7 @@ export default Dashboard;
 
 export async function getServerSideProps(ctx: GetSessionParams | undefined) {
     const session = await getSession(ctx);
+    console.log(session, "this is session in server");
     // if no session, redirect to home
     if (!session) {
         return {

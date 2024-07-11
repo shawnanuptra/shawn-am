@@ -11,6 +11,7 @@ export default NextAuth({
     callbacks: {
         // only allow sign in from my email
         async signIn({ user }) {
+            console.log(user.email, "hit async callback");
             if (user.email == "shawnanuptraamartin@gmail.com") {
                 return true;
             } else {
