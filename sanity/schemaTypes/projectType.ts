@@ -31,5 +31,9 @@ export const projectType = defineType({
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: "markdownContent",
+            type: "markdown",
+        }),
     ],
 });
