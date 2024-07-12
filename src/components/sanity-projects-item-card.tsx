@@ -1,10 +1,16 @@
 import { device } from "@/utilities/deviceSize";
 import Image from "next/image";
 import Link from "next/link";
+import type { Image as ImgSrc } from "sanity";
 import styled from "styled-components";
 import { urlForImage } from "../../sanity/lib/image";
+import { Project } from "../../sanity/types";
 
-function SanityProjectItemCard({ project }: any) {
+interface Props {
+    project: Project;
+}
+
+function SanityProjectItemCard({ project }: Props) {
     const Wrapper = styled.div`
         display: grid;
         grid-template-columns: 1fr;
@@ -77,7 +83,7 @@ function SanityProjectItemCard({ project }: any) {
     `;
 
     console.log(project.thumbnail);
-    console.log(urlForImage(project.thumbnail));
+    console.log(urlForImage(project.thumbnail as ImgSrc));
     // load img url from sanity
     // console.log(urlForImage(project.thumbnail), "ol");
 
@@ -94,7 +100,7 @@ function SanityProjectItemCard({ project }: any) {
                         sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
                         style={{ objectFit: "contain" }}
                         loader={({ width, quality = 100 }) =>
-                            urlForImage(project.thumbnail)
+                            urlForImage(project?.thumbnail as ImgSrc)
                         }
                     />
                 </div>

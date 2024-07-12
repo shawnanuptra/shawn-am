@@ -2,13 +2,19 @@ import SanityProjectItemCard from "@/components/sanity-projects-item-card";
 import hljs from "highlight.js";
 import js from "highlight.js/lib/languages/javascript";
 import { serialize } from "next-mdx-remote/serialize";
-import { SanityDocument } from "next-sanity";
+import { groq } from "next-sanity";
 import Image, { ImageProps } from "next/image";
 import { useEffect } from "react";
 import { sanityFetch } from "../../../sanity/lib/client";
+import { Project, TESTING_QUERYResult } from "../../../sanity/types";
 import { H2, H3, P, StyledA, Title } from "../projects/[slug]";
 
-export default function RenderSanityPage({ projects, content }: any) {
+interface Props {
+    projects: Project[];
+    content: string;
+}
+
+export default function RenderSanityPage({ projects, content }: Props) {
     // load img url from sanity
     useEffect(() => {
         // const hljs = require("highlight.js");
@@ -54,7 +60,7 @@ export default function RenderSanityPage({ projects, content }: any) {
     };
     return (
         <div key={1} style={{ maxWidth: "500px" }}>
-            {projects.map((project: any) => (
+            {projects.map((project: Project) => (
                 <SanityProjectItemCard project={project} key={project.title} />
             ))}
         </div>
@@ -62,12 +68,12 @@ export default function RenderSanityPage({ projects, content }: any) {
 }
 
 export async function getStaticProps() {
-    const projects = await sanityFetch<SanityDocument[]>({
-        query: `*[_type=='project']{title, slug, description, thumbnail, markdownContent}`,
+    const TESTING_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}`;
+    const projects = await sanityFetch<TESTING_QUERYResult>({
+        query: TESTING_QUERY,
     });
 
-    //render markdown here?
-    const content = await serialize(projects[0].markdownContent);
+    const content = await serialize(projects[0]?.markdownContent as string);
     return {
         props: {
             projects,
