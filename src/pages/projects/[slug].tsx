@@ -14,7 +14,7 @@ interface Props {
     mdxSource: MDXRemoteSerializeResult;
 }
 
-const BlogContainer = styled.div`
+export const BlogContainer = styled.div`
     max-width: 1000px;
     margin: 5rem auto;
     border: 2px solid #202020;
@@ -65,7 +65,7 @@ export const P = styled.p`
     }
 `;
 
-const components = {
+export const components = {
     h1: (props: any) => <Title>{props.children}</Title>,
     h2: (props: any) => <H2>{props.children}</H2>,
     h3: (props: any) => <H3>{props.children}</H3>,

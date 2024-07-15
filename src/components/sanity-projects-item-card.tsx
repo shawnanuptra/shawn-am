@@ -82,14 +82,8 @@ function SanityProjectItemCard({ project }: Props) {
         }
     `;
 
-    console.log(project.thumbnail);
-    console.log(urlForImage(project.thumbnail as ImgSrc));
-    // load img url from sanity
-    // console.log(urlForImage(project.thumbnail), "ol");
-
-    console.log("testing");
     return (
-        <Link href={`/projects/${project.slug}`}>
+        <Link href={`/sanity-test-output/sanity-proj/${project.slug?.current}`}>
             <Wrapper>
                 <div className='image-wrapper'>
                     <Image

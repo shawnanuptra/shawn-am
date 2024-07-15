@@ -177,9 +177,9 @@ export type Markdown = string;
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Markdown;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../src/pages/sanity-test-output/index.tsx
-// Variable: TESTING_QUERY
+// Variable: GET_PROJECTS_QUERY
 // Query: *[_type=='project']{title, slug, description, thumbnail, markdownContent}
-export type TESTING_QUERYResult = Array<{
+export type GET_PROJECTS_QUERYResult = Array<{
   title: string | null;
   slug: Slug | null;
   description: string | null;
@@ -196,3 +196,15 @@ export type TESTING_QUERYResult = Array<{
   } | null;
   markdownContent: string | null;
 }>;
+// Source: ../src/pages/sanity-test-output/sanity-proj/[slug].tsx
+// Variable: GET_PROJECTS_SLUG_QUERY
+// Query: *[_type=='project']{slug}
+export type GET_PROJECTS_SLUG_QUERYResult = Array<{
+  slug: Slug | null;
+}>;
+// Variable: GET_PROJECT_DATA_QUERY
+// Query: *[_type=='project' && slug.current==$slug][0]{title, markdownContent}
+export type GET_PROJECT_DATA_QUERYResult = {
+  title: string | null;
+  markdownContent: string | null;
+} | null;
