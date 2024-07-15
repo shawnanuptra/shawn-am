@@ -14,22 +14,22 @@ export const Projects: Project[] = [
         imgSource: "/flappy-bird.png",
     },
     {
-        slug: "bridle-path-damage-reporting-app",
-        title: "Bridle Path Damage Reporting App",
+        slug: "bridle-path-damage-report",
+        title: "Bridle Path Damage Report",
         description:
             "This mobile-first website is created for an artificial use case of reporting bridle path damage. It was an assignment during my study in Sunderland Uni.",
         imgSource: "/bridle-path.png",
     },
     {
-        slug: "cafe-mobile-app-with-flutter",
-        title: "Cafe Mobile App with Flutter",
+        slug: "flutter-cafe-mobile-app",
+        title: "Flutter Cafe Mobile App",
         description:
             "This project is the focus of my final year project at the University of Sunderland. I work as a barista, thus the combining of my passions of coffee and technology is exciting!",
         imgSource: "/cameo.png",
     },
     {
-        slug: "api-in-express-app",
-        title: "API in Express App",
+        slug: "api-in-express",
+        title: "API in Express",
         description:
             "This project is about making an API to access a local data. The API works within a Node.js application wrapped in Express. An automatic API doc was also used using auto-generated documentation by APIDOC.",
         imgSource: "/express.png",
