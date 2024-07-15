@@ -89,6 +89,7 @@ export const components = {
                 width: "auto",
                 height: "auto",
                 maxHeight: "800px",
+                minWidth: "200px",
                 maxWidth: "100%",
                 textAlign: "center",
                 display: "block",

@@ -9,6 +9,11 @@ const imageBuilder = createImageUrlBuilder({
 });
 
 export const urlForImage = (source: Image) => {
-    // return imageBuilder?.image(source).auto("format").fit("max").url();
-    return imageBuilder?.image(source).url();
+    return imageBuilder
+        ?.image(source)
+        .auto("format")
+        .fit("max")
+        .quality(100)
+        .url();
+    // return imageBuilder?.image(source).url();
 };
