@@ -1,10 +1,12 @@
 import ProjectItemCard from "@/components/projects-item-card";
 import { Container } from "@/components/styles";
 import { device } from "@/utilities/deviceSize";
+import { groq } from "next-sanity";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import { Projects } from "../utilities/data";
+import { sanityFetch } from "../../sanity/lib/client";
+import { GET_PROJECTS_QUERYResult, Project } from "../../sanity/types";
 
 const Hero = styled.section`
     display: grid;
@@ -135,7 +137,10 @@ const ProjectSection = styled.section`
     }
 `;
 
-export default function Home() {
+interface Props {
+    projects: Project[];
+}
+export default function Home({ projects }: Props) {
     return (
         <>
             <Head>
@@ -183,7 +188,7 @@ export default function Home() {
 
                         <div className='projects-grid'>
                             {/* List of Projects */}
-                            {Projects.map((project) => (
+                            {projects.map((project) => (
                                 <ProjectItemCard
                                     project={project}
                                     key={project.title}
@@ -195,4 +200,17 @@ export default function Home() {
             </main>
         </>
     );
+}
+
+export async function getStaticProps() {
+    const GET_PROJECTS_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}`;
+    const projects = await sanityFetch<GET_PROJECTS_QUERYResult>({
+        query: GET_PROJECTS_QUERY,
+    });
+
+    return {
+        props: {
+            projects,
+        },
+    };
 }

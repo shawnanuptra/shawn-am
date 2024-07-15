@@ -1,20 +1,24 @@
-import { Projects } from "@/utilities/data";
 import { device } from "@/utilities/deviceSize";
-import { promises as fs } from "fs";
 import hljs from "highlight.js";
 import js from "highlight.js/lib/languages/javascript";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import { groq } from "next-sanity";
 import Image, { ImageProps } from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
 import styled from "styled-components";
+import { sanityFetch } from "../../../sanity/lib/client";
+import {
+    GET_PROJECTS_SLUG_QUERYResult,
+    GET_PROJECT_DATA_QUERYResult,
+} from "../../../sanity/types";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
 }
 
-const BlogContainer = styled.div`
+export const BlogContainer = styled.div`
     max-width: 1000px;
     margin: 5rem auto;
     border: 2px solid #202020;
@@ -29,7 +33,7 @@ const BlogContainer = styled.div`
     }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
     font-size: 3rem;
     /* padding-bottom: 1rem;
 	border-bottom: 1px solid grey; */
@@ -37,18 +41,18 @@ const Title = styled.h1`
         font-size: 2.5rem;
     }
 `;
-const H2 = styled.h2`
+export const H2 = styled.h2`
     font-size: 2rem;
     margin: 2.5rem 0 2rem;
     padding-top: 2.5rem;
     border-top: 1px solid grey;
 `;
-const H3 = styled.h3`
+export const H3 = styled.h3`
     font-size: 1.5rem;
     margin-top: 3rem;
 `;
 
-const StyledA = styled.a`
+export const StyledA = styled.a`
     color: #202020;
     text-decoration: underline;
     cursor: pointer;
@@ -56,7 +60,7 @@ const StyledA = styled.a`
     white-space: wrap;
 `;
 
-const P = styled.p`
+export const P = styled.p`
     margin: 1.25rem 0;
     color: #202020d5;
     @media ${device.sm} {
@@ -65,7 +69,7 @@ const P = styled.p`
     }
 `;
 
-const components = {
+export const components = {
     h1: (props: any) => <Title>{props.children}</Title>,
     h2: (props: any) => <H2>{props.children}</H2>,
     h3: (props: any) => <H3>{props.children}</H3>,
@@ -85,6 +89,7 @@ const components = {
                 width: "auto",
                 height: "auto",
                 maxHeight: "800px",
+                minWidth: "200px",
                 maxWidth: "100%",
                 textAlign: "center",
                 display: "block",
@@ -120,21 +125,17 @@ const ProjectPage = ({ mdxSource }: Props) => {
 
 export default ProjectPage;
 
-// This function gets called at build time
+// getStaticPaths for paths of projects
 export const getStaticPaths: GetStaticPaths = async () => {
-    // Call an external API endpoint to get posts
-    // const res = await fetch("https://.../posts");
-    // const posts = await res.json();
-
-    // Get the paths we want to pre-render based on posts
-    const paths = Projects.map((project) => ({
+    const GET_PROJECTS_SLUG_QUERY = groq`*[_type=='project']{slug}`;
+    const slugs = await sanityFetch<GET_PROJECTS_SLUG_QUERYResult>({
+        query: GET_PROJECTS_SLUG_QUERY,
+    });
+    const paths = slugs.map(({ slug }) => ({
         params: {
-            slug: project.slug,
+            slug: slug?.current,
         },
     }));
-
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
     return { paths, fallback: false };
 };
 
@@ -142,12 +143,18 @@ interface IParams extends ParsedUrlQuery {
     slug: string;
 }
 
+// getStaticProps to get project information from server
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
+    const GET_PROJECT_DATA_QUERY = groq`*[_type=='project' && slug.current==$slug][0]{title, markdownContent}`;
+    const project = await sanityFetch<GET_PROJECT_DATA_QUERYResult>({
+        query: GET_PROJECT_DATA_QUERY,
+        params: {
+            slug: slug,
+        },
+    });
 
-    // MDX text - can be from a local file, database, CMS, fetch, anywhere...
-    const res = await fs.readFile(`src/markdown/${slug}.md`, "utf-8");
-    // const mdxText = await res.text();
-    const mdxSource = await serialize(res);
+    const mdxSource = await serialize(project?.markdownContent as string);
+
     return { props: { mdxSource } };
 };

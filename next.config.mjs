@@ -7,6 +7,9 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['highlight.js'],
   },
+  images: {
+    domains: ["cdn.sanity.io", "via.placeholder.com"],
+  },
 };
 
 export default nextConfig;
