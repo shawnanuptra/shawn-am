@@ -87,14 +87,14 @@ const ProjectItemCard = ({ project }: PropInterface) => {
             <Wrapper>
                 <div className='image-wrapper'>
                     <Image
-                        src={"doesnt matter"}
+                        // loader={({ width, quality = 100 }) =>
+                        //     urlForImage(project?.thumbnail as ImgSrc)
+                        // }
+                        src={urlForImage(project?.thumbnail as ImgSrc)}
                         alt={("thumbnail of " + project.title) as string}
                         fill={true}
-                        sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
+                        sizes={`${device.sm} 90vw, 40vw`}
                         style={{ objectFit: "contain" }}
-                        loader={({ width, quality = 100 }) =>
-                            urlForImage(project?.thumbnail as ImgSrc)
-                        }
                     />
                 </div>
                 <div className='content'>
