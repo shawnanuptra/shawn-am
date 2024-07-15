@@ -1,15 +1,19 @@
-import { Projects } from "@/utilities/data";
 import { device } from "@/utilities/deviceSize";
-import { promises as fs } from "fs";
 import hljs from "highlight.js";
 import js from "highlight.js/lib/languages/javascript";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import { groq } from "next-sanity";
 import Image, { ImageProps } from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
 import styled from "styled-components";
+import { sanityFetch } from "../../../sanity/lib/client";
+import {
+    GET_PROJECTS_SLUG_QUERYResult,
+    GET_PROJECT_DATA_QUERYResult,
+} from "../../../sanity/types";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
 }
@@ -120,21 +124,17 @@ const ProjectPage = ({ mdxSource }: Props) => {
 
 export default ProjectPage;
 
-// This function gets called at build time
+// getStaticPaths for paths of projects
 export const getStaticPaths: GetStaticPaths = async () => {
-    // Call an external API endpoint to get posts
-    // const res = await fetch("https://.../posts");
-    // const posts = await res.json();
-
-    // Get the paths we want to pre-render based on posts
-    const paths = Projects.map((project) => ({
+    const GET_PROJECTS_SLUG_QUERY = groq`*[_type=='project']{slug}`;
+    const slugs = await sanityFetch<GET_PROJECTS_SLUG_QUERYResult>({
+        query: GET_PROJECTS_SLUG_QUERY,
+    });
+    const paths = slugs.map(({ slug }) => ({
         params: {
-            slug: project.slug,
+            slug: slug?.current,
         },
     }));
-
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
     return { paths, fallback: false };
 };
 
@@ -142,12 +142,18 @@ interface IParams extends ParsedUrlQuery {
     slug: string;
 }
 
+// getStaticProps to get project information from server
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
+    const GET_PROJECT_DATA_QUERY = groq`*[_type=='project' && slug.current==$slug][0]{title, markdownContent}`;
+    const project = await sanityFetch<GET_PROJECT_DATA_QUERYResult>({
+        query: GET_PROJECT_DATA_QUERY,
+        params: {
+            slug: slug,
+        },
+    });
 
-    // MDX text - can be from a local file, database, CMS, fetch, anywhere...
-    const res = await fs.readFile(`src/markdown/${slug}.md`, "utf-8");
-    // const mdxText = await res.text();
-    const mdxSource = await serialize(res);
+    const mdxSource = await serialize(project?.markdownContent as string);
+
     return { props: { mdxSource } };
 };

@@ -1,9 +1,10 @@
-import { Project } from "@/utilities/data";
 import { device } from "@/utilities/deviceSize";
 import Image from "next/image";
 import Link from "next/link";
+import type { Image as ImgSrc } from "sanity";
 import styled from "styled-components";
-
+import { urlForImage } from "../../sanity/lib/image";
+import { Project } from "../../sanity/types";
 const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -82,15 +83,18 @@ interface PropInterface {
 const ProjectItemCard = ({ project }: PropInterface) => {
     //todo: add more details on hover! maybe like stars or something?
     return (
-        <Link href={`/projects/${project.slug}`}>
+        <Link href={`/projects/${project.slug?.current}`}>
             <Wrapper>
                 <div className='image-wrapper'>
                     <Image
-                        src={project.imgSource}
-                        alt='temporary'
+                        src={"doesnt matter"}
+                        alt={("thumbnail of " + project.title) as string}
                         fill={true}
                         sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
                         style={{ objectFit: "contain" }}
+                        loader={({ width, quality = 100 }) =>
+                            urlForImage(project?.thumbnail as ImgSrc)
+                        }
                     />
                 </div>
                 <div className='content'>
