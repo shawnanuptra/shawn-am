@@ -1,11 +1,9 @@
-import React from "react";
+import { Projects, SocialLinks } from "@/utilities/data";
+import { device } from "@/utilities/deviceSize";
+import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import { Container } from "./styles";
-import { Projects, SocialLinks } from "@/utilities/data";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import Link from "next/link";
-import { device } from "@/utilities/deviceSize";
 
 const Wrapper = styled.footer`
     display: flex;
@@ -64,9 +62,11 @@ const Wrapper = styled.footer`
         margin: 1rem 0;
 
         & > * {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             border-radius: 0.5rem;
             transition: all 0.1s ease-out;
+            display: grid;
+            place-content: center;
 
             &:hover {
                 transform: translateX(1px) translateY(-1px);
@@ -110,7 +110,7 @@ const Wrapper = styled.footer`
             margin: 0 0 0 1.5rem;
             grid-area: socials;
             & > * {
-                padding: 0 0.2rem;
+                padding: 0.2rem;
             }
         }
 
