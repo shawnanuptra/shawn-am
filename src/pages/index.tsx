@@ -81,6 +81,15 @@ const Hero = styled.section`
             /* width: 200px; */
         }
     }
+
+    @media ${device.sm} {
+        .hero-img-wrapper {
+            box-shadow: -8px 5px 0 #202020;
+            .img {
+                border-width: 0.4rem;
+            }
+        }
+    }
 `;
 
 const ProjectSection = styled.section`
