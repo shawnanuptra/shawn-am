@@ -179,10 +179,10 @@ export default function Home({ projects }: Props) {
     return (
         <>
             <Head>
-                <title>Shawn A. M. | Bringing web to life</title>
+                <title>Shawn A. Martin</title>
                 <meta
                     name='description'
-                    content='Shawn A. Martin - aspiring web developer'
+                    content='Shawn A. Martin - Junior Web Developer'
                 />
                 <meta
                     name='viewport'
