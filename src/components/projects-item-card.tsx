@@ -64,6 +64,10 @@ const Wrapper = styled.div`
         margin: 0 0 1rem 0;
         border-width: 0.4rem;
 
+        .image-wrapper {
+            min-height: 100px;
+        }
+
         .content {
             padding: 1rem;
             h3 {
