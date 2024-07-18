@@ -88,7 +88,10 @@ interface PropInterface {
 const ProjectItemCard = ({ project }: PropInterface) => {
     //todo: add more details on hover! maybe like stars or something?
     return (
-        <Link href={`/projects/${project.slug?.current}`}>
+        <Link
+            aria-label={"A link to see my project: " + project.title}
+            href={`/projects/${project.slug?.current}`}
+        >
             <Wrapper>
                 <div className='image-wrapper'>
                     <Image

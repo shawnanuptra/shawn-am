@@ -148,12 +148,20 @@ const Footer = () => {
                         ))}
                     </div>
                     <div className='socials'>
-                        <a href={SocialLinks.linkedIn} target='_blank'>
-                            <FaLinkedin />
+                        <a
+                            href={SocialLinks.linkedIn}
+                            aria-label='LinkedIn link'
+                            target='_blank'
+                        >
+                            <FaLinkedin aria-label='LinkedIn icon' />
                         </a>
 
-                        <a href={SocialLinks.github} target='_blank'>
-                            <FaGithub />
+                        <a
+                            href={SocialLinks.github}
+                            aria-label='Github link'
+                            target='_blank'
+                        >
+                            <FaGithub aria-label='Github icon' />
                         </a>
                     </div>
                     <p className='copyright'>Shawn A. Martin @ 2024</p>
