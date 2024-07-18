@@ -4,6 +4,7 @@ import { device } from "@/utilities/deviceSize";
 import { groq } from "next-sanity";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 import { sanityFetch } from "../../sanity/lib/client";
 import { GET_PROJECTS_QUERYResult, Project } from "../../sanity/types";
@@ -20,7 +21,8 @@ const Hero = styled.section`
         place-self: center center;
         h1 {
             font-size: 5rem;
-            margin: 0 0 1rem 0;
+            margin: 0 0 2rem 0;
+            line-height: 1;
         }
         p {
             margin: 0;
@@ -45,7 +47,7 @@ const Hero = styled.section`
         /* width: 200px; */
     }
 
-    @media ${device.sm} {
+    @media ${device.md} {
         display: flex;
         flex-direction: column;
         height: auto;
@@ -80,6 +82,15 @@ const Hero = styled.section`
             /* width: 200px; */
         }
     }
+
+    @media ${device.sm} {
+        .hero-img-wrapper {
+            box-shadow: -8px 5px 0 #202020;
+            .img {
+                border-width: 0.4rem;
+            }
+        }
+    }
 `;
 
 const ProjectSection = styled.section`
@@ -111,7 +122,29 @@ const ProjectSection = styled.section`
         gap: 2rem;
     }
 
-    @media ${device.sm} {
+    .more-projects {
+        display: block;
+        width: fit-content;
+        background-color: #202020;
+        color: #fafafa;
+        border: 1px solid #202020;
+        padding: 1.25rem 2rem;
+        font-size: 1.25rem;
+        border-radius: 0.5rem;
+        margin: 4rem auto 0;
+
+        transition: all 0.1s ease-in;
+        /* margin: 0 auto; */
+        &:hover {
+            background-color: #fafafa;
+            cursor: pointer;
+            color: #202020;
+            transform: translateX(3px) translateY(-3px);
+            box-shadow: -8px 8px 0px #202020;
+            outline: 2px solid #202020;
+        }
+    }
+    @media ${device.md} {
         &::before {
             content: "";
             display: block;
@@ -134,6 +167,9 @@ const ProjectSection = styled.section`
             flex-direction: column;
             gap: 1rem;
         }
+        .more-projects {
+            font-size: 1rem;
+        }
     }
 `;
 
@@ -144,10 +180,10 @@ export default function Home({ projects }: Props) {
     return (
         <>
             <Head>
-                <title>Shawn A. M. | Bringing web to life</title>
+                <title>Shawn A. Martin</title>
                 <meta
                     name='description'
-                    content='Shawn A. Martin - aspiring web developer'
+                    content='Shawn A. Martin - Junior Web Developer'
                 />
                 <meta
                     name='viewport'
@@ -184,7 +220,7 @@ export default function Home({ projects }: Props) {
                 </Container>
                 <ProjectSection>
                     <Container>
-                        <h2 id='projects'>Projects</h2>
+                        <h2 id='projects'>Latest Projects</h2>
 
                         <div className='projects-grid'>
                             {/* List of Projects */}
@@ -195,6 +231,9 @@ export default function Home({ projects }: Props) {
                                 />
                             ))}
                         </div>
+                        <Link href='/projects' className='more-projects'>
+                            See more projects &#8594;
+                        </Link>
                     </Container>
                 </ProjectSection>
             </main>
@@ -203,7 +242,7 @@ export default function Home({ projects }: Props) {
 }
 
 export async function getStaticProps() {
-    const GET_PROJECTS_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}`;
+    const GET_PROJECTS_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}[0...4]`;
     const projects = await sanityFetch<GET_PROJECTS_QUERYResult>({
         query: GET_PROJECTS_QUERY,
     });

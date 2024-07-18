@@ -1,4 +1,4 @@
-import { DM_Serif_Display, Inter, Roboto } from "next/font/google";
+import { Andika, DM_Serif_Display, Inter, Roboto } from "next/font/google";
 
 export const roboto = Roboto({
     weight: ["400", "700", "900"],
@@ -12,5 +12,10 @@ export const inter = Inter({
 
 export const dmSerifDisplay = DM_Serif_Display({
     weight: "400",
+    subsets: ["latin"],
+});
+
+export const andika = Andika({
+    weight: ["400", "700"],
     subsets: ["latin"],
 });

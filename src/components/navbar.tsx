@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { dmSerifDisplay, inter } from "@/utilities/fonts";
-import { Container } from "./styles";
-import Link from "next/link";
 import { device } from "@/utilities/deviceSize";
+import { inter } from "@/utilities/fonts";
+import Link from "next/link";
+import styled from "styled-components";
 
 const StyledHeader = styled.div`
     position: relative;
@@ -148,6 +146,7 @@ const SayHi = styled.li`
     color: white;
     padding: 0.7rem 1.5rem;
     border-radius: 0.5rem;
+    white-space: nowrap;
 `;
 
 const Wrapper = styled.div`

@@ -6,32 +6,33 @@ import styled from "styled-components";
 import { urlForImage } from "../../sanity/lib/image";
 import { Project } from "../../sanity/types";
 const Wrapper = styled.div`
+    aspect-ratio: 1/1;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(200px, auto) 1fr;
+    grid-template-rows: 1fr 1fr;
 
     width: 100%;
     height: 100%;
 
-    min-height: 400px;
-    border-radius: 1rem;
+    min-height: 200px;
+    border-radius: 0.4rem;
     background-color: white;
 
-    border: 0.5rem solid #202020;
+    border: 1px solid #202020;
+    border-width: 0.2rem;
 
-    padding: 2rem;
+    padding: 1rem;
     margin: 0 0 4rem 0;
 
     transition: all 0.1s ease-out;
 
-    box-shadow: -5px 10px 0px #202020;
-
     place-self: center;
 
     &:hover {
-        transform: translateX(3px) translateY(-5px);
+        /* transform: translateX(3px) translateY(-5px); */
         cursor: pointer;
-        box-shadow: -13px 18px 0px #202020;
+        background-color: #202020;
+        color: #fafafa;
     }
 
     .image-wrapper {
@@ -41,12 +42,10 @@ const Wrapper = styled.div`
     }
 
     .content {
-        padding: 2rem;
-        h3 {
-            margin: 0 0 1rem 0;
-            font-size: 2rem;
-            line-height: 1.1;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 0;
         p {
             margin: 0;
         }
@@ -61,19 +60,15 @@ const Wrapper = styled.div`
 
     @media ${device.sm} {
         padding: 1rem;
-        grid-template-rows: 1fr auto;
-        margin: 0 0 1rem 0;
-        border-width: 0.4rem;
-
+        /* grid-template-rows: 1fr auto; */
+        /* margin: 0 0 1rem 0; */
+        /* border-width: 0.4rem; */
+        /* 
         .image-wrapper {
             min-height: 100px;
-        }
+        } */
 
         .content {
-            padding: 1rem;
-            h3 {
-                font-size: 1.5rem;
-            }
             p {
                 font-size: 1rem;
             }
@@ -85,10 +80,13 @@ interface PropInterface {
     project: Project;
 }
 
-const ProjectItemCard = ({ project }: PropInterface) => {
+const AllProjectItemCard = ({ project }: PropInterface) => {
     //todo: add more details on hover! maybe like stars or something?
     return (
-        <Link href={`/projects/${project.slug?.current}`}>
+        <Link
+            href={`/projects/${project.slug?.current}`}
+            style={{ aspectRatio: 1 / 1 }}
+        >
             <Wrapper>
                 <div className='image-wrapper'>
                     <Image
@@ -103,12 +101,11 @@ const ProjectItemCard = ({ project }: PropInterface) => {
                     />
                 </div>
                 <div className='content'>
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
+                    <p>{project.title}</p>
                 </div>
             </Wrapper>
         </Link>
     );
 };
 
-export default ProjectItemCard;
+export default AllProjectItemCard;

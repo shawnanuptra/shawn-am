@@ -5,7 +5,7 @@ export const Container = styled.div`
     max-width: 1200px;
     /* background-color: teal; */
     margin: 0 auto;
-    padding: 5rem 0;
+    padding: 5rem 3vw;
 
     @media ${device.sm} {
         max-width: 90vw;
