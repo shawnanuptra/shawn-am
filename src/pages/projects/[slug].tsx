@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
+import Head from "next/head";
 import Image, { ImageProps } from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
@@ -16,6 +17,7 @@ import {
 } from "../../../sanity/types";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
+    projectTitle: string;
 }
 
 export const BlogContainer = styled.div`
@@ -101,7 +103,7 @@ export const components = {
     ),
 };
 
-const ProjectPage = ({ mdxSource }: Props) => {
+const ProjectPage = ({ mdxSource, projectTitle }: Props) => {
     useEffect(() => {
         // const hljs = require("highlight.js");
         hljs.configure({});
@@ -114,6 +116,13 @@ const ProjectPage = ({ mdxSource }: Props) => {
 
     return (
         <>
+            <Head>
+                <title>{projectTitle}</title>
+                <meta
+                    property='og:title'
+                    content={"Shawn A. M. | " + projectTitle}
+                />
+            </Head>
             <BlogContainer>
                 <MDXRemote {...mdxSource} components={components} />
             </BlogContainer>
@@ -155,6 +164,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     });
 
     const mdxSource = await serialize(project?.markdownContent as string);
-
-    return { props: { mdxSource } };
+    const projectTitle = project?.title;
+    return { props: { mdxSource, projectTitle } };
 };

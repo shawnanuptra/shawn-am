@@ -1,6 +1,7 @@
 import AllProjectItemCard from "@/components/all-projects-item";
 import { Container } from "@/components/styles";
 import { groq } from "next-sanity";
+import Head from "next/head";
 import styled from "styled-components";
 import { sanityFetch } from "../../../sanity/lib/client";
 import { GET_PROJECTS_QUERYResult, Project } from "../../../sanity/types";
@@ -19,19 +20,33 @@ interface Props {
 }
 function Projects({ projects }: Props) {
     return (
-        <Container>
-            <Main>
-                <h1>All Projects</h1>
-                <div className='grid'>
-                    {projects.map((project) => (
-                        <AllProjectItemCard
-                            project={project}
-                            key={project.title}
-                        />
-                    ))}
-                </div>
-            </Main>
-        </Container>
+        <>
+            <Head>
+                <title>All Projects</title>
+                <meta name='description' content='All my showcased projects.' />
+                <meta
+                    property='og:title'
+                    content='Shawn A. M. | All Projects'
+                />
+                <meta
+                    property='og:description'
+                    content='Here are all my showcased projects. More definitely coming!'
+                />
+            </Head>
+            <Container>
+                <Main>
+                    <h1>All Projects</h1>
+                    <div className='grid'>
+                        {projects.map((project) => (
+                            <AllProjectItemCard
+                                project={project}
+                                key={project.title}
+                            />
+                        ))}
+                    </div>
+                </Main>
+            </Container>
+        </>
     );
 }
 
