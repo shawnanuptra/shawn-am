@@ -8,7 +8,7 @@ import { Project } from "../../sanity/types";
 const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: minmax(200px, auto) 1fr;
 
     width: 100%;
     height: 100%;
@@ -45,6 +45,7 @@ const Wrapper = styled.div`
         h3 {
             margin: 0 0 1rem 0;
             font-size: 2rem;
+            line-height: 1.1;
         }
         p {
             margin: 0;

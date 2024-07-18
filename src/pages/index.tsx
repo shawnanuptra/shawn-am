@@ -21,7 +21,8 @@ const Hero = styled.section`
         place-self: center center;
         h1 {
             font-size: 5rem;
-            margin: 0 0 1rem 0;
+            margin: 0 0 2rem 0;
+            line-height: 1;
         }
         p {
             margin: 0;
