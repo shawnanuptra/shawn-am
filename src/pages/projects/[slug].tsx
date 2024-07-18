@@ -15,6 +15,8 @@ import {
     GET_PROJECTS_SLUG_QUERYResult,
     GET_PROJECT_DATA_QUERYResult,
 } from "../../../sanity/types";
+import styles from "./[slug].module.css";
+
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
     projectTitle: string;
@@ -37,6 +39,7 @@ export const BlogContainer = styled.div`
 
 export const Title = styled.h1`
     font-size: 3rem;
+    line-height: 1.3;
     /* padding-bottom: 1rem;
 	border-bottom: 1px solid grey; */
     @media ${device.sm} {
@@ -65,6 +68,7 @@ export const StyledA = styled.a`
 export const P = styled.p`
     margin: 1.25rem 0;
     color: #202020d5;
+    line-height: 1.5;
     @media ${device.sm} {
         font-size: 1rem;
         margin: 0 auto;
@@ -78,9 +82,8 @@ export const components = {
     a: (props: any) => <StyledA href={props.href}>{props.children}</StyledA>,
     p: (props: any) => <P>{props.children}</P>,
     code: (props: any) => (
-        <code style={{ whiteSpace: "pre-wrap !important" }}>
-            {props.children}
-        </code>
+        // <code style={{ whiteSpace: "pre-wrap !important" }}>
+        <code className={styles.codestyle}>{props.children}</code>
     ),
     img: (props: any) => (
         <Image
@@ -123,7 +126,7 @@ const ProjectPage = ({ mdxSource, projectTitle }: Props) => {
                     content={"Shawn A. M. | " + projectTitle}
                 />
             </Head>
-            <BlogContainer>
+            <BlogContainer className={styles.container}>
                 <MDXRemote {...mdxSource} components={components} />
             </BlogContainer>
 
