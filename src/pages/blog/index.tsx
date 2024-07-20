@@ -5,7 +5,9 @@ import Head from "next/head";
 import styled from "styled-components";
 import { sanityFetch } from "../../../sanity/lib/client";
 
-const Main = styled.main``;
+const Main = styled.main`
+    margin-bottom: 2rem;
+`;
 
 const Blogs = styled.div`
     h1 {
@@ -17,6 +19,13 @@ const Blogs = styled.div`
     }
 
     border-bottom: 1px solid black;
+`;
+
+const BlogItemCardWrapper = styled.div`
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 `;
 interface Props {
     blogs: any;
@@ -38,7 +47,7 @@ function Blog({ blogs }: Props) {
             </Head>
 
             <Main>
-                <Container>
+                <Container style={{ paddingBottom: 0 }}>
                     <Blogs>
                         <h1>Blogs</h1>
                         <p>
@@ -47,9 +56,11 @@ function Blog({ blogs }: Props) {
                         </p>
                     </Blogs>
                 </Container>
-                {blogs.map((blog: any) => (
-                    <BlogItemCard blog={blog} key={blog.title} />
-                ))}
+                <BlogItemCardWrapper>
+                    {blogs.map((blog: any) => (
+                        <BlogItemCard blog={blog} key={blog.title} />
+                    ))}
+                </BlogItemCardWrapper>
             </Main>
         </>
     );

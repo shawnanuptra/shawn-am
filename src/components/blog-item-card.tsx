@@ -1,8 +1,8 @@
+import { device } from "@/utilities/deviceSize";
 import Link from "next/link";
 import styled from "styled-components";
-import { Container } from "./styles";
 
-const Wrapper = styled.div`
+const Content = styled.div`
     h2 {
         font-size: clamp(1.5rem, 3vw, 2rem);
         line-height: 1.1;
@@ -28,24 +28,30 @@ const Wrapper = styled.div`
     }
     .read-more {
         font-weight: bold;
-        margin: 1rem 0 2rem 0;
+        margin: 1rem 0 0 0;
     }
+`;
+
+const Wrapper = styled.div`
+    padding: 2rem 3vw;
+    transition: all 0.1s ease-out;
     &:hover {
         color: #fafafa;
         background-color: #202020;
         cursor: pointer;
     }
+    @media ${device.sm} {
+        padding: 1rem;
+    }
 `;
-
 function BlogItemCard({ blog }: any) {
-    console.log(blog);
     return (
-        <Container>
+        <Wrapper>
             <Link
                 aria-label={"A link to see my blog post: " + blog.title}
                 href={`/blog/${blog.slug.current}`}
             >
-                <Wrapper>
+                <Content>
                     <h2>{blog.title}</h2>
                     <time dateTime={blog.publishedAt}>
                         {new Date(blog.publishedAt).toDateString()}
@@ -62,9 +68,9 @@ function BlogItemCard({ blog }: any) {
                     <p className='read-more' aria-hidden='true'>
                         Read more &#8594;
                     </p>
-                </Wrapper>
+                </Content>
             </Link>
-        </Container>
+        </Wrapper>
     );
 }
 
