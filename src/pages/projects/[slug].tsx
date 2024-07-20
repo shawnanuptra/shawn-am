@@ -34,6 +34,8 @@ export const BlogContainer = styled.div`
     @media ${device.sm} {
         border: 0;
         margin: 0 auto;
+        padding: 1rem;
+        max-width: 100vw;
     }
 `;
 
@@ -71,7 +73,7 @@ export const P = styled.p`
     line-height: 1.5;
     @media ${device.sm} {
         font-size: 1rem;
-        margin: 0 auto;
+        margin: 1rem auto;
     }
 `;
 

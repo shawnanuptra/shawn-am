@@ -185,8 +185,11 @@ const Navbar = () => {
                     </Logo>
                     <nav>
                         <ul>
-                            <Link href={"/#projects"}>
+                            <Link href={"/projects"}>
                                 <li className='my-li'>Projects</li>
+                            </Link>
+                            <Link href={"/blog"}>
+                                <li className='my-li'>Blog</li>
                             </Link>
                             <a href='/Shawn-CV.pdf' download={"Shawn-CV"}>
                                 <li className='my-li'>Resume</li>
@@ -205,7 +208,9 @@ const Navbar = () => {
                 </Wrapper>
                 <div className='modal-outer' onClick={handleOuterModalClick}>
                     <nav className='modal' onClick={handleClick}>
-                        <Link href={"/#projects"}>Projects</Link>
+                        <Link href={"/projects"}>Projects</Link>
+
+                        <Link href={"/blog"}>Blog</Link>
                         <a href='/Shawn-CV.pdf' download={"Shawn-CV"}>
                             Resume
                         </a>

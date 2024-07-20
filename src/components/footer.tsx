@@ -125,7 +125,7 @@ const Wrapper = styled.footer`
 const FooterContainer = styled.div`
     background-color: #202020;
     color: #fafafa;
-    margin-top: 5rem;
+    margin-top: auto;
 `;
 const Footer = () => {
     return (

@@ -176,9 +176,9 @@ export type Markdown = string;
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Markdown;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ../src/pages/sanity-test-output/index.tsx
+// Source: ../src/pages/index.tsx
 // Variable: GET_PROJECTS_QUERY
-// Query: *[_type=='project']{title, slug, description, thumbnail, markdownContent}
+// Query: *[_type=='project']{title, slug, description, thumbnail, markdownContent}[0...4]
 export type GET_PROJECTS_QUERYResult = Array<{
   title: string | null;
   slug: Slug | null;
@@ -196,7 +196,7 @@ export type GET_PROJECTS_QUERYResult = Array<{
   } | null;
   markdownContent: string | null;
 }>;
-// Source: ../src/pages/sanity-test-output/sanity-proj/[slug].tsx
+// Source: ../src/pages/projects/[slug].tsx
 // Variable: GET_PROJECTS_SLUG_QUERY
 // Query: *[_type=='project']{slug}
 export type GET_PROJECTS_SLUG_QUERYResult = Array<{
@@ -208,3 +208,23 @@ export type GET_PROJECT_DATA_QUERYResult = {
   title: string | null;
   markdownContent: string | null;
 } | null;
+// Source: ../src/pages/projects/index.tsx
+// Variable: GET_ALL_PROJECTS_QUERY
+// Query: *[_type=='project']{title, slug, description, thumbnail, markdownContent}
+export type GET_ALL_PROJECTS_QUERYResult = Array<{
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  thumbnail: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  markdownContent: string | null;
+}>;
