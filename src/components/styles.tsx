@@ -8,7 +8,6 @@ export const Container = styled.div`
     padding: 5rem 3vw;
 
     @media ${device.sm} {
-        /* max-width: 90vw; */
         padding: 1rem;
     }
 `;
