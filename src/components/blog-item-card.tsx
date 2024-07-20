@@ -10,22 +10,34 @@ const Content = styled.div`
     }
     time,
     .series {
-        font-size: 0.8rem;
         margin: 0;
     }
 
     .series {
         font-style: italic;
     }
-    p {
-        margin: 0;
-        font-size: 0.9rem;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        /* Set the number of lines you want to display */
-        -webkit-line-clamp: 3; /* Change '3' to the desired number of lines */
+
+    @media ${device.sm} {
+        time,
+        .series {
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .series {
+            font-style: italic;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            /* Set the number of lines you want to display */
+            -webkit-line-clamp: 3; /* Change '3' to the desired number of lines */
+        }
     }
+
     .read-more {
         font-weight: bold;
         margin: 1rem 0 0 0;
