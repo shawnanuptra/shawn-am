@@ -8,6 +8,7 @@ import { ParsedUrlQuery } from "querystring";
 import styled from "styled-components";
 import { sanityFetch } from "../../../sanity/lib/client";
 import { BlogContainer, components } from "../projects/[slug]";
+import { useRouter } from "next/router";
 interface Props {
     mdxSource: MDXRemoteSerializeResult;
     blogTitle: string;
@@ -38,6 +39,10 @@ const TitleWrapper = styled.div`
     }
 `;
 const BlogPostPage = ({ mdxSource, blogTitle, blog }: Props) => {
+    const router = useRouter();
+    if (router.isFallback) {
+        return <p>Loading..</p>;
+    }
     return (
         <>
             <Head>
