@@ -3,7 +3,7 @@ import { inter } from "@/utilities/fonts";
 import Link from "next/link";
 import styled from "styled-components";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
     position: relative;
     z-index: 100;
     /* display: flex; */
