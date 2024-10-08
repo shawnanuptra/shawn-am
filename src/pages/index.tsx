@@ -192,32 +192,34 @@ export default function Home({ projects }: Props) {
                 <link rel='icon' href='/favicon.ico' as='icon' />
             </Head>
             <main>
-                <Container>
-                    <Hero>
-                        <div className='hero-content'>
-                            <h1>Hello there!</h1>
-                            {/* todo: idea! make a good quote after every refresh on wish you all the best. */}
-                            <p>
-                                I&apos;m Shawn.
-                                <br />
-                                I like making cool stuff on the web.
-                                <br />
-                                Welcome to my corner of the internet :]
-                            </p>
-                        </div>
-                        <div className='hero-img-wrapper'>
-                            <Image
-                                sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
-                                priority={true}
-                                src={"/profile.JPG"}
-                                fill={true}
-                                style={{ objectFit: "cover" }}
-                                alt='Profile picture of me'
-                                className='img'
-                            />
-                        </div>
-                    </Hero>
-                </Container>
+                <section>
+                    <Container>
+                        <Hero>
+                            <div className='hero-content'>
+                                <h1>Hello there!</h1>
+                                {/* todo: idea! make a good quote after every refresh on wish you all the best. */}
+                                <p>
+                                    I&apos;m Shawn.
+                                    <br />
+                                    I like making cool stuff on the web.
+                                    <br />
+                                    Welcome to my corner of the internet :]
+                                </p>
+                            </div>
+                            <div className='hero-img-wrapper'>
+                                <Image
+                                    sizes={`(max-width: ${device.sm}) 90vw, 40vw`}
+                                    priority={true}
+                                    src={"/profile.JPG"}
+                                    fill={true}
+                                    style={{ objectFit: "cover" }}
+                                    alt='Profile picture of me'
+                                    className='img'
+                                />
+                            </div>
+                        </Hero>
+                    </Container>
+                </section>
                 <ProjectSection>
                     <Container>
                         <h2 id='projects'>Latest Projects</h2>

@@ -33,8 +33,8 @@ function Projects({ projects }: Props) {
                     content='Here are all my showcased projects. More definitely coming!'
                 />
             </Head>
-            <Container>
-                <Main>
+            <Main>
+                <Container>
                     <h1>All Projects</h1>
                     <div className='grid'>
                         {projects.map((project) => (
@@ -44,8 +44,8 @@ function Projects({ projects }: Props) {
                             />
                         ))}
                     </div>
-                </Main>
-            </Container>
+                </Container>
+            </Main>
         </>
     );
 }

@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import { Container } from "./styles";
 
-const Wrapper = styled.footer`
+const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +122,7 @@ const Wrapper = styled.footer`
     }
 `;
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
     background-color: #202020;
     color: #fafafa;
     margin-top: auto;

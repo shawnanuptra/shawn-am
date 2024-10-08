@@ -60,13 +60,6 @@ const Wrapper = styled.div`
 
     @media ${device.sm} {
         padding: 1rem;
-        /* grid-template-rows: 1fr auto; */
-        /* margin: 0 0 1rem 0; */
-        /* border-width: 0.4rem; */
-        /* 
-        .image-wrapper {
-            min-height: 100px;
-        } */
 
         .content {
             p {

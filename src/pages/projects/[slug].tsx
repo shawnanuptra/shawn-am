@@ -22,7 +22,7 @@ interface Props {
     projectTitle: string;
 }
 
-export const BlogContainer = styled.div`
+export const BlogContainer = styled.main`
     max-width: 1000px;
     margin: 5rem auto;
     border: 2px solid #202020;

@@ -44,7 +44,7 @@ const Content = styled.div`
     }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
     padding: 2rem 3vw;
     transition: all 0.1s ease-out;
     &:hover {
@@ -64,22 +64,26 @@ function BlogItemCard({ blog }: any) {
                 href={`/blog/${blog.slug.current}`}
             >
                 <Content>
-                    <h2>{blog.title}</h2>
-                    <time dateTime={blog.publishedAt}>
-                        {new Date(blog.publishedAt).toDateString()}
-                    </time>
-                    {
-                        // show series if there it's in a series
-                        blog.series && (
-                            <p className='series'>
-                                {blog.series}: Entry {blog.entry}
-                            </p>
-                        )
-                    }
+                    <header>
+                        <h2>{blog.title}</h2>
+                        <time dateTime={blog.publishedAt}>
+                            {new Date(blog.publishedAt).toDateString()}
+                        </time>
+                        {
+                            // show series if there it's in a series
+                            blog.series && (
+                                <p className='series'>
+                                    {blog.series}: Entry {blog.entry}
+                                </p>
+                            )
+                        }
+                    </header>
                     <p>{blog.description}</p>
-                    <p className='read-more' aria-hidden='true'>
-                        Read more &#8594;
-                    </p>
+                    <footer>
+                        <p className='read-more' aria-hidden='true'>
+                            Read more &#8594;
+                        </p>
+                    </footer>
                 </Content>
             </Link>
         </Wrapper>
