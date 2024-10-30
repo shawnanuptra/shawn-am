@@ -3,5 +3,5 @@ import { blogType } from "./schemaTypes/blogType";
 import { projectType } from "./schemaTypes/projectType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-    types: [projectType, blogType],
+	types: [projectType, blogType],
 };
