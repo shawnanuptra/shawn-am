@@ -8,6 +8,7 @@ const Content = styled.div`
 		line-height: 1.1;
 		margin: 0;
 	}
+
 	time,
 	.series {
 		margin: 0;
@@ -27,6 +28,7 @@ const Content = styled.div`
 		.series {
 			font-style: italic;
 		}
+
 		p {
 			margin: 0;
 			font-size: 0.9rem;
@@ -47,15 +49,19 @@ const Content = styled.div`
 const Wrapper = styled.article`
 	padding: 2rem 3vw;
 	transition: all 0.1s ease-out;
+
+	&:focus-within,
 	&:hover {
 		color: #fafafa;
 		background-color: #202020;
 		cursor: pointer;
 	}
+
 	@media ${device.sm} {
 		padding: 1rem;
 	}
 `;
+
 function BlogItemCard({ blog }: any) {
 	return (
 		<Wrapper>

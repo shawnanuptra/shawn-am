@@ -13,6 +13,7 @@ const Main = styled.main`
 		display: grid;
 		gap: 0.5rem;
 		grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+		grid-auto-rows: 1fr;
 	}
 `;
 interface Props {

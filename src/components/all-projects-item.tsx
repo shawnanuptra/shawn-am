@@ -5,11 +5,13 @@ import type { Image as ImgSrc } from "sanity";
 import styled from "styled-components";
 import { urlForImage } from "../../sanity/lib/image";
 import { Project } from "../../sanity/types";
-const Wrapper = styled.div`
-	aspect-ratio: 1/1;
+
+const Wrapper = styled.article`
+	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 1fr;
+	gap: 1rem;
 
 	width: 100%;
 	height: 100%;
@@ -20,35 +22,48 @@ const Wrapper = styled.div`
 
 	border: 1px solid #202020;
 	border-width: 0.2rem;
-
 	padding: 1rem;
-	margin: 0 0 4rem 0;
 
 	transition: all 0.1s ease-out;
 
-	place-self: center;
-
+	&:focus-within,
 	&:hover {
-		/* transform: translateX(3px) translateY(-5px); */
 		cursor: pointer;
 		background-color: #202020;
 		color: #fafafa;
 	}
 
+	.stretched-link {
+		font-size: 1.125rem;
+
+		/*  stretching the <a>, making the card accessible */
+		&::after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			content: "";
+		}
+
+		/* focus state is already stated in Wrapper */
+		&:focus {
+			outline: none;
+		}
+	}
+
 	.image-wrapper {
 		position: relative;
 		width: 100%;
-		height: auto;
+		height: 100%;
+
+		grid-row: 1;
 	}
 
 	.content {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: 1rem 0;
-		p {
-			margin: 0;
-		}
 	}
 	.separator {
 		content: "";
@@ -59,8 +74,6 @@ const Wrapper = styled.div`
 	}
 
 	@media ${device.sm} {
-		padding: 1rem;
-
 		.content {
 			p {
 				font-size: 1rem;
@@ -76,25 +89,25 @@ interface PropInterface {
 const AllProjectItemCard = ({ project }: PropInterface) => {
 	//todo: add more details on hover! maybe like stars or something?
 	return (
-		<Link href={`/projects/${project.slug?.current}`} style={{ aspectRatio: 1 / 1 }}>
-			<Wrapper>
-				<div className="image-wrapper">
-					<Image
-						// loader={({ width, quality = 100 }) =>
-						//     urlForImage(project?.thumbnail as ImgSrc)
-						// }
-						src={urlForImage(project?.thumbnail as ImgSrc)}
-						alt={("thumbnail of " + project.title) as string}
-						fill={true}
-						sizes={`${device.sm} 90vw, 40vw`}
-						style={{ objectFit: "contain" }}
-					/>
-				</div>
-				<div className="content">
-					<p>{project.title}</p>
-				</div>
-			</Wrapper>
-		</Link>
+		<Wrapper>
+			<div className="content">
+				<Link href={`/projects/${project.slug?.current}`} className="stretched-link">
+					{project.title}
+				</Link>
+			</div>
+			<div className="image-wrapper">
+				<Image
+					// loader={({ width, quality = 100 }) =>
+					//     urlForImage(project?.thumbnail as ImgSrc)
+					// }
+					src={urlForImage(project?.thumbnail as ImgSrc)}
+					alt={("thumbnail of " + project.title) as string}
+					fill={true}
+					sizes={`${device.sm} 90vw, 40vw`}
+					style={{ objectFit: "contain" }}
+				/>
+			</div>
+		</Wrapper>
 	);
 };
 
