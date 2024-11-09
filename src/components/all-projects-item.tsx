@@ -82,7 +82,8 @@ const AllProjectItemCard = ({ project }: PropInterface) => {
 					//     urlForImage(project?.thumbnail as ImgSrc)
 					// }
 					src={urlForImage(project?.thumbnail as ImgSrc)}
-					alt={("thumbnail of " + project.title) as string}
+					alt={""}
+					aria-hidden={true}
 					fill={true}
 					sizes={`${device.sm} 90vw, 40vw`}
 					style={{ objectFit: "contain" }}
