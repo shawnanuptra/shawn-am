@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 	color: #fafafa;
 	background-color: #202020;
 
-	h2 {
+	.home-link {
 		display: inline;
 		font-weight: 400;
 		font-size: 1.3rem;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 		transition: all 0.1s ease-out;
 		cursor: pointer;
 
+		&:focus-visible,
 		&:hover {
 			transform: translateX(1px) translateY(-1px);
 			box-shadow: -5px 5px 0px #fafafa;
@@ -88,7 +89,7 @@ const Wrapper = styled.div`
 	}
 
 	@media ${device.sm} {
-		h2 {
+		.home-link {
 			font-size: 1rem;
 		}
 		display: grid;
@@ -98,7 +99,7 @@ const Wrapper = styled.div`
 			"copyright copyright";
 		grid-template-columns: 2fr 1fr;
 		align-items: flex-start;
-		h2 {
+		.home-link {
 			grid-area: logo;
 			padding: 0.2rem 0;
 		}
@@ -144,11 +145,9 @@ const Footer = () => {
 		<FooterContainer>
 			<Container>
 				<Wrapper>
-					<h2>
-						<Link href={"/"}>
-							<strong>Shawn A. M.</strong> Portfolio
-						</Link>
-					</h2>
+					<Link className="home-link" href={"/"}>
+						<strong>Shawn A. M.</strong> Portfolio
+					</Link>
 					<ul className="projects">
 						{Projects.map((project) => (
 							<li className="project-item" key={project.title}>
