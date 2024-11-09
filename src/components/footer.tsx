@@ -157,11 +157,11 @@ const Footer = () => {
 					</ul>
 					<div className="socials">
 						<a href={SocialLinks.linkedIn} aria-label="LinkedIn link" target="_blank">
-							<FaLinkedin aria-label="LinkedIn icon" />
+							<FaLinkedin aria-hidden />
 						</a>
 
 						<a href={SocialLinks.github} aria-label="Github link" target="_blank">
-							<FaGithub aria-label="Github icon" />
+							<FaGithub aria-hidden />
 						</a>
 					</div>
 					<p className="copyright">Shawn A. Martin @ 2024</p>
