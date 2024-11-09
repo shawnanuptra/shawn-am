@@ -38,22 +38,32 @@ const Wrapper = styled.div`
 		display: flex;
 		flex-direction: row;
 		gap: 1rem;
-		.project-item {
-			/* font-weight: bold; */
-			cursor: pointer;
-			font-size: 1rem;
+		padding: 0;
 
+		.project-item {
 			padding: 0.7rem 1.5rem;
 			border-radius: 0.5rem;
 			transition: all 0.1s ease-out;
 
+			cursor: pointer;
+			font-size: 1rem;
+
+			list-style: none;
+
+			&:focus-within,
 			&:hover {
 				transform: translateX(1px) translateY(-1px);
 				box-shadow: -5px 5px 0px #fafafa;
 				outline: 2px solid #fafafa;
 			}
+
+			/* focus-rings replaced by hover state */
+			a {
+				outline: none;
+			}
 		}
 	}
+
 	.socials {
 		display: flex;
 		flex-direction: row;
@@ -68,6 +78,7 @@ const Wrapper = styled.div`
 			display: grid;
 			place-content: center;
 
+			&:focus-within,
 			&:hover {
 				transform: translateX(1px) translateY(-1px);
 				box-shadow: -5px 5px 0px #fafafa;
@@ -127,6 +138,7 @@ const FooterContainer = styled.footer`
 	color: #fafafa;
 	margin-top: auto;
 `;
+
 const Footer = () => {
 	return (
 		<FooterContainer>
@@ -137,13 +149,13 @@ const Footer = () => {
 							<strong>Shawn A. M.</strong> Portfolio
 						</Link>
 					</h2>
-					<div className="projects">
+					<ul className="projects">
 						{Projects.map((project) => (
-							<Link key={project.title} href={`/projects/${project.slug}`}>
-								<p className="project-item">{project.title}</p>
-							</Link>
+							<li className="project-item" key={project.title}>
+								<Link href={`/projects/${project.slug}`}>{project.title}</Link>
+							</li>
 						))}
-					</div>
+					</ul>
 					<div className="socials">
 						<a href={SocialLinks.linkedIn} aria-label="LinkedIn link" target="_blank">
 							<FaLinkedin aria-label="LinkedIn icon" />
