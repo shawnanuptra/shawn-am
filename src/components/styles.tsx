@@ -40,4 +40,23 @@ p {
 *:focus-visible	{
 	outline: 3px solid orange;
 }
+
+.stretched-link {
+	font-size: 1.125rem;
+
+	/*  stretching the <a>, making the card accessible */
+	&::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		content: "";
+	}
+
+	/* focus state is already stated in Wrapper */
+	&:focus {
+		outline: none;
+	}
+}
 `;
