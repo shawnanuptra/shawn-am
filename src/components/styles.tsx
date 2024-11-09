@@ -36,4 +36,8 @@ p {
 * {
     box-sizing: border-box;
 }
+
+*:focus-visible	{
+	outline: 3px solid orange;
+}
 `;
