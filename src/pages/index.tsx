@@ -134,7 +134,8 @@ const ProjectSection = styled.section`
 		margin: 4rem auto 0;
 
 		transition: all 0.1s ease-in;
-		/* margin: 0 auto; */
+
+		&:focus-visible,
 		&:hover {
 			background-color: #fafafa;
 			cursor: pointer;
@@ -142,8 +143,10 @@ const ProjectSection = styled.section`
 			transform: translateX(3px) translateY(-3px);
 			box-shadow: -8px 8px 0px #202020;
 			outline: 2px solid #202020;
+			outline-offset: 0;
 		}
 	}
+
 	@media ${device.md} {
 		&::before {
 			content: "";
@@ -165,8 +168,9 @@ const ProjectSection = styled.section`
 		.projects-grid {
 			display: flex;
 			flex-direction: column;
-			gap: 1rem;
+			gap: 1.5rem;
 		}
+
 		.more-projects {
 			font-size: 1rem;
 		}
