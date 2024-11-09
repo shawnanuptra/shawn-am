@@ -42,6 +42,7 @@ p {
 }
 
 .stretched-link {
+	display: inline-block;
 	font-size: 1.125rem;
 
 	/*  stretching the <a>, making the card accessible */
@@ -52,6 +53,8 @@ p {
 		bottom: 0;
 		left: 0;
 		content: "";
+
+		z-index: 1;
 	}
 
 	/* focus state is already stated in Wrapper */
