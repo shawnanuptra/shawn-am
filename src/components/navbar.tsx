@@ -26,20 +26,20 @@ const StyledHeader = styled.header`
 
 		li {
 			transition: all 0.1s ease-out;
-			&:hover {
-				transform: translateX(1px) translateY(-1px);
-				box-shadow: -5px 5px 0px #202020;
-				color: #202020;
-				background-color: #fafafa;
-				outline: 2px solid #202020;
-			}
+		}
+
+		/* font-size of nav links */
+		.stretched-link {
+			font-size: 0.875rem;
 		}
 
 		.my-li {
+			position: relative;
 			padding: 0.7rem 1.5rem;
 			border-radius: 0.5rem;
 			transition: all 0.1s ease-out;
 
+			&:focus-within,
 			&:hover {
 				transform: translateX(1px) translateY(-1px);
 				box-shadow: -5px 5px 0px #202020;
@@ -142,11 +142,21 @@ const Logo = styled.span`
 `;
 
 const SayHi = styled.li`
+	position: relative;
 	background-color: #202020;
 	color: white;
 	padding: 0.7rem 1.5rem;
 	border-radius: 0.5rem;
 	white-space: nowrap;
+
+	&:focus-within,
+	&:hover {
+		transform: translateX(1px) translateY(-1px);
+		box-shadow: -5px 5px 0px #202020;
+		color: #202020;
+		background-color: #fafafa;
+		outline: 2px solid #202020;
+	}
 `;
 
 const Wrapper = styled.div`
@@ -185,18 +195,30 @@ const Navbar = () => {
 					</Logo>
 					<nav>
 						<ul>
-							<Link href={"/projects"}>
-								<li className="my-li">Projects</li>
-							</Link>
-							<Link href={"/blog"}>
-								<li className="my-li">Blog</li>
-							</Link>
-							<a href="/Shawn-CV.pdf" download={"Shawn-CV"}>
-								<li className="my-li">Resume</li>
-							</a>
-							<a href="mailto: shawnanuptraamartin@gmail.com" target="_blank">
-								<SayHi>Say hi!</SayHi>
-							</a>
+							<li className="my-li">
+								<Link className="stretched-link" href={"/projects"}>
+									Projects
+								</Link>
+							</li>
+							<li className="my-li">
+								<Link className="stretched-link" href={"/blog"}>
+									Blog
+								</Link>
+							</li>
+							<li className="my-li">
+								<a className="stretched-link" href="/Shawn-CV.pdf" download={"Shawn-CV"}>
+									Resume
+								</a>
+							</li>
+							<SayHi>
+								<a
+									className="stretched-link"
+									href="mailto: shawnanuptraamartin@gmail.com"
+									target="_blank"
+								>
+									Say hi!
+								</a>
+							</SayHi>
 						</ul>
 						<div className="mobileMenu" onClick={handleClick}>
 							<div className="line"></div>
