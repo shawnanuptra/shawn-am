@@ -9,6 +9,8 @@ import styled from "styled-components";
 import { sanityFetch } from "../../../sanity/lib/client";
 import { BlogContainer, components } from "../projects/[slug]";
 import { useRouter } from "next/router";
+import styles from "./[slug].module.css";
+
 interface Props {
 	mdxSource: MDXRemoteSerializeResult;
 	blogTitle: string;
@@ -49,7 +51,7 @@ const BlogPostPage = ({ mdxSource, blogTitle, blog }: Props) => {
 				<title>{blogTitle}</title>
 				<meta property="og:title" content={"Shawn A. M. | " + blogTitle} />
 			</Head>
-			<BlogContainer>
+			<BlogContainer className={styles.container}>
 				<TitleWrapper>
 					<h1>{blogTitle}</h1>
 					<time dateTime={blog.publishedAt}>{new Date(blog.publishedAt).toDateString()}</time>
