@@ -239,7 +239,7 @@ export default function Home({ projects }: Props) {
 }
 
 export async function getStaticProps() {
-	const GET_PROJECTS_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}[0...4]`;
+	const GET_PROJECTS_QUERY = groq`*[_type=='project']{title, slug, description, thumbnail, markdownContent}|order(_updatedAt desc)[0...4]`;
 	const projects = await sanityFetch<GET_PROJECTS_QUERYResult>({
 		query: GET_PROJECTS_QUERY,
 	});
