@@ -144,7 +144,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 			slug: slug?.current,
 		},
 	}));
-	return { paths, fallback: false };
+	return { paths, fallback: 'blocking' };
 };
 
 interface IParams extends ParsedUrlQuery {
