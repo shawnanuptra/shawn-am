@@ -164,5 +164,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	const mdxSource = await serialize(project?.markdownContent as string);
 	const projectTitle = project?.title;
-	return { props: { mdxSource, projectTitle } };
+	return { props: { mdxSource, projectTitle }, revalidate: 5 };
 };
