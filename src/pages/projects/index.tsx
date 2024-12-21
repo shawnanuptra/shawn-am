@@ -57,5 +57,6 @@ export async function getStaticProps() {
 			projects,
 		},
 		revalidate: 10,
+		fallback: 'blocking',
 	};
 }
