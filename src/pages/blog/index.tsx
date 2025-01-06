@@ -66,7 +66,7 @@ function Blog({ blogs }: Props) {
 export default Blog;
 
 export async function getStaticProps() {
-	const GET_BLOGS = groq`*[_type=='blog']`;
+	const GET_BLOGS = groq`*[_type=='blog'] | order(publishedAt desc)`;
 	const blogs = await sanityFetch({
 		query: GET_BLOGS,
 	});
