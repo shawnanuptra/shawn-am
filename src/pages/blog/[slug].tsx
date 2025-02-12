@@ -77,9 +77,9 @@ export default BlogPostPage;
 
 // getStaticPaths for paths of projects
 export const getStaticPaths: GetStaticPaths = async () => {
-	const GET_PROJECTS_SLUG_QUERY = groq`*[_type=='blog']{slug}`;
+	const GET_BLOGS_SLUG_QUERY = groq`*[_type=='blog']{slug}`;
 	const slugs = await sanityFetch<any>({
-		query: GET_PROJECTS_SLUG_QUERY,
+		query: GET_BLOGS_SLUG_QUERY,
 	});
 	const paths = slugs.map(({ slug }: any) => ({
 		params: {
@@ -96,9 +96,9 @@ interface IParams extends ParsedUrlQuery {
 // getStaticProps to get project information from server
 export const getStaticProps: GetStaticProps = async (context) => {
 	const { slug } = context.params as IParams;
-	const GET_PROJECT_DATA_QUERY = groq`*[_type=='blog' && slug.current==$slug][0]{title, markdownContent, publishedAt, series, entry}`;
+	const GET_BLOG_DATA_QUERY = groq`*[_type=='blog' && slug.current==$slug][0]{title, markdownContent, publishedAt, series, entry}`;
 	const blog = await sanityFetch<any>({
-		query: GET_PROJECT_DATA_QUERY,
+		query: GET_BLOG_DATA_QUERY,
 		params: {
 			slug: slug,
 		},
