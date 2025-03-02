@@ -62,12 +62,12 @@ const Wrapper = styled.article`
 	}
 `;
 
-function BlogItemCard({ blog }: any) {
+function BlogItemCard({ blog, isBlog = true }: any) {
 	return (
 		<Wrapper>
 			<Link
 				aria-label={"A link to see my blog post: " + blog.title}
-				href={`/blog/${blog.slug.current}`}
+				href={isBlog ? `/blog/${blog.slug.current}` : `/today-i-learned/${blog.slug.current}`}
 			>
 				<Content>
 					<header>

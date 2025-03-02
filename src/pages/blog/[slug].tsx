@@ -16,7 +16,7 @@ interface Props {
 	blogTitle: string;
 	blog: any;
 }
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
 	h1 {
 		font-size: 3rem;
 		line-height: 1.3;
