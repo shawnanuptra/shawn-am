@@ -129,7 +129,7 @@ const TodayILearnedPage = ({ mdxSource, publishedAt, entryTitle }: Props) => {
 			<BlogContainer className={styles.container}>
 				<TitleWrapper>
 					<h1>{entryTitle}</h1>
-					<time dateTime={publishedAt}>{new Date(publishedAt).toDateString()}</time>
+					<time dateTime={publishedAt.toString()}>{new Date(publishedAt).toDateString()}</time>
 				</TitleWrapper>
 				<MDXRemote {...mdxSource} components={components} />
 			</BlogContainer>
