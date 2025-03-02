@@ -143,7 +143,7 @@ export default TodayILearnedPage;
 
 // getStaticPaths for paths of projects
 export const getStaticPaths: GetStaticPaths = async () => {
-	const GET_TIL_SLUG_QUERY = groq`*[_type=='project']{slug}`;
+	const GET_TIL_SLUG_QUERY = groq`*[_type=='entries']{slug}`;
 	const slugs = await sanityFetch<any>({
 		query: GET_TIL_SLUG_QUERY,
 	});
