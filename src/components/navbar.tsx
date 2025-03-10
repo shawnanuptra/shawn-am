@@ -206,9 +206,9 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li className="my-li">
-								<a className="stretched-link" href="/Shawn-CV.pdf" download={"Shawn-CV"}>
-									Resume
-								</a>
+								<Link className="stretched-link" href={"/today-i-learned"}>
+									Today I Learned
+								</Link>
 							</li>
 							<SayHi>
 								<a
@@ -230,9 +230,7 @@ const Navbar = () => {
 						<Link href={"/projects"}>Projects</Link>
 
 						<Link href={"/blog"}>Blog</Link>
-						<a href="/Shawn-CV.pdf" download={"Shawn-CV"}>
-							Resume
-						</a>
+						<Link href={"/today-i-learned"}>Blog</Link>
 						<a href="mailto: shawnanuptraamartin@gmail.com" target="_blank">
 							Say hi!
 						</a>
