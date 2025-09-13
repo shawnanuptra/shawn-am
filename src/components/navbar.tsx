@@ -6,9 +6,7 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
 	position: relative;
 	z-index: 100;
-	/* display: flex; */
 	padding: 1rem 3vw;
-	/* margin: 0 auto; */
 	justify-content: space-between;
 	place-items: center;
 	font-size: 14px;
@@ -76,8 +74,6 @@ const StyledHeader = styled.header`
 			color: #fafafa;
 			background: #202020;
 			position: absolute;
-			// todo: don't use static number of 68px (height of navbar)!!
-			/* top: 68px; */
 			top: 0;
 			left: 0;
 
@@ -162,6 +158,7 @@ const SayHi = styled.li`
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	gap: 2rem;
 	justify-content: space-between;
 	place-items: center;
 	max-width: 1200px;
